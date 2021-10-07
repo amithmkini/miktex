@@ -3,8 +3,8 @@
  */
 
 #if defined(MIKTEX_WINDOWS)
-#  define MIKTEX_UTF8_WRAP_ALL 1
-#  include <miktex/utf8wrap.h>
+#define MIKTEX_UTF8_WRAP_ALL 1
+#include <miktex/utf8wrap.h>
 #endif
 #include <kpathsea/config.h>
 #include <kpathsea/c-memstr.h>
@@ -20,6 +20,14 @@
 #include <ptexenc/unicode-jp.h>
 
 #include <ctype.h>
+#if defined(MIKTEX)
+#include <miktex/Core/C/api.h>
+#if !defined(PATH_MAX)
+#define PATH_MAX 260
+#endif
+#define popen miktex_popen
+#define pclose miktex_pclose
+#endif
 
 #define ENC_UNKNOWN  0
 #define ENC_JIS      1
@@ -42,7 +50,7 @@ static boolean prior_file_enc = false;
 #endif
 
 const char *ptexenc_version_string = PTEXENCVERSION;
-#if defined(WIN32)
+#if !defined(MIKTEX) && defined(WIN32)
 FILE *Poptr;
 int infile_enc_auto;
 #else
@@ -157,7 +165,7 @@ void enable_UPTEX (boolean enable)
         default_kanji_enc = ENC_UPTEX;
         internal_enc = ENC_UPTEX;
     } else {
-#ifdef WIN32
+#if !defined(MIKTEX) && defined(WIN32)
         default_kanji_enc = ENC_UTF8;
         internal_enc = ENC_SJIS;
 #else
@@ -194,7 +202,7 @@ boolean set_enc_string(const_string file_str, const_string internal_str)
     if (file < 0 || internal < 0) return false; /* error */
     if (file     != ENC_UNKNOWN) {
         set_file_enc(file);
-#if !defined(WIN32)
+#if defined(MIKTEX) || !defined(WIN32)
         infile_enc_auto = 0;
         nkf_disable();
 #endif
@@ -421,7 +429,7 @@ static long toENC(long kcode, int enc)
 #define KANJI_OUT  LONG(0, ESC, '(', 'B')
 
 static int put_multibyte(long c, FILE *fp) {
-#ifdef WIN32
+#if !defined(MIKTEX) && defined(WIN32)
     const int fd = fileno(fp);
 
     if ((fd == fileno(stdout) || fd == fileno(stderr)) && _isatty(fd)) {
@@ -486,7 +494,7 @@ int putc2(int c, FILE *fp)
     const int fd = fileno(fp);
     int ret = c, output_enc;
 
-#ifdef WIN32
+#if !defined(MIKTEX) && defined(WIN32)
     if ((fp == stdout || fp == stderr) && (_isatty(fd) || !prior_file_enc)) {
         output_enc = ENC_UTF8;
      } else
@@ -551,7 +559,7 @@ static int getc4(FILE *fp)
     struct unget_st *p = &ungetbuff[fileno(fp)];
 
     if (p->size == 0)
-#ifdef WIN32
+#if !defined(MIKTEX) && defined(WIN32)
     {
         const int fd = fileno(fp);
         HANDLE hStdin;
@@ -767,7 +775,7 @@ long input_line2(FILE *fp, unsigned char *buff, long pos,
     while (last < buffsize-30 && (i=getc4(fp)) != EOF && i!='\n' && i!='\r') {
         /* 30 is enough large size for one char */
         /* attention: 4 times of write_hex() eats 16byte */
-#ifdef WIN32
+#if !defined(MIKTEX) && defined(WIN32)
         if (i == 0x1a && first == last &&
             fd == fileno(stdin) && _isatty(fd)) { /* Ctrl+Z on console */
                 i = EOF;
@@ -852,7 +860,7 @@ boolean setstdinenc(const char *str)
     return true;
 }
 
-#ifdef WIN32
+#if !defined(MIKTEX) && defined(WIN32)
 void clear_infile_enc(FILE *fp)
 {
     infile_enc[fileno(fp)] = ENC_UNKNOWN;

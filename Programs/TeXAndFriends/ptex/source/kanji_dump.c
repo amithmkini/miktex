@@ -2,6 +2,10 @@
  *  Dump/undump Kanji encoding for (e)ptex.
  */
 
+#if defined(MIKTEX_WINDOWS)
+#  define MIKTEX_UTF8_WRAP_ALL 1
+#  include <miktex/utf8wrap.h>
+#endif
 #include "kanji.h"
 #ifndef pTeX
 #define pTeX

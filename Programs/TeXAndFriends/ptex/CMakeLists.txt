@@ -19,8 +19,13 @@
 
 set(MIKTEX_CURRENT_FOLDER "${MIKTEX_IDE_TEX_AND_FRIENDS_FOLDER}/pTeX")
 
+include_directories(BEFORE
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/source
+)
 
-include(pdvitype.cmake)
+include(libkanji.cmake)
 
 add_custom_target(ptex-dev ALL
     DEPENDS
