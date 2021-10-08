@@ -20,6 +20,9 @@
 #else /* ! (PTENC_DLL && (WIN32 || __CYGWIN__)) */
 #define PTENCDLL
 #endif
+#if defined(MIKTEX) && defined(__cplusplus)
+extern "C" {
+#endif
 
 extern PTENCDLL const char *ptexenc_version_string;
 #if defined(WIN32)
@@ -100,4 +103,7 @@ extern PTENCDLL unsigned char *ptenc_from_internal_enc_string_to_utf8(const unsi
 extern PTENCDLL int ptenc_get_command_line_args(int *p_ac, char ***p_av);
 #endif
 
+#if defined(MIKTEX) && defined(__cplusplus)
+}
+#endif
 #endif /* PTEXENC_PTEXENC_H */

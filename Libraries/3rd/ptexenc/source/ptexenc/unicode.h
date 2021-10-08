@@ -8,6 +8,9 @@
 
 #include <kpathsea/types.h>
 #include <ptexenc/ptexenc.h> /* for PTENCDLL */
+#if defined(MIKTEX) && defined(__cplusplus)
+extern "C" {
+#endif
 
 /* determine if UTF-8 character or not */
 extern boolean isUTF8(int length, int nth, int c);
@@ -54,4 +57,7 @@ extern long UPTEXtoUCS(long uptex);
 /* UTF-16 surrogate pair -> UTF-32 over U+FFFF */
 #define UTF16StoUTF32(x,y) ((((x) & 0x3ff) << 10) + ((y) & 0x3ff) + 0x10000)
 
+#if defined(MIKTEX) && defined(__cplusplus)
+}
+#endif
 #endif /* PTEXENC_UNICODE_H */

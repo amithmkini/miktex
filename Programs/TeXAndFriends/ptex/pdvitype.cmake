@@ -17,6 +17,8 @@
 ## Foundation, 59 Temple Place - Suite 330, Boston, MA 02111-1307,
 ## USA.
 
+set(pdvitype_target_name pdvitype)
+
 set(dvitype_miktex_change_file ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/dvitype-miktex.ch)
 set(dvitype_web_file ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/source/dvitype.web)
 
@@ -51,7 +53,7 @@ add_custom_command(
     DEPENDS
         ${CMAKE_CURRENT_SOURCE_DIR}/pdvitype-miktex-adapter.ch
         ${MIKTEX_PREFIX}tie
-        ${${CMAKE_CURRENT_BINARY_DIR}/dvitype-miktex.web}
+        ${CMAKE_CURRENT_BINARY_DIR}/dvitype-miktex.web
     VERBATIM
 )
 
@@ -75,6 +77,19 @@ add_custom_command(
 set(pdvitype_web_file ${CMAKE_CURRENT_BINARY_DIR}/pdvitype-final.web)
 
 create_web_app(pDVItype)
+
+if(LINK_EVERYTHING_STATICALLY)
+    target_link_libraries(${MIKTEX_PREFIX}pdvitype
+        ptex_kanji
+    )
+else()
+    target_link_libraries(${pdvitype_target_name}
+        PRIVATE
+            ptex_kanji
+    )
+endif()
+
+# Last but not least: developer's convenience
 
 add_custom_command(
     OUTPUT

@@ -25,12 +25,21 @@ set(libkanji_sources
 
 add_library(ptex_kanji STATIC ${libkanji_sources})
 
+target_include_directories(ptex_kanji
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/source
+)
+
 target_link_libraries(ptex_kanji
-    PRIVATE
+    PUBLIC
         ${ptexenc_dll_name}
         ${w2cemu_dll_name}
-        ${web2c_sources_dll_name}
         ${zlib_dll_name}
+)
+
+target_link_libraries(ptex_kanji
+    PRIVATE
+        ${web2c_sources_dll_name}
 )
 
 if(MIKTEX_NATIVE_WINDOWS)

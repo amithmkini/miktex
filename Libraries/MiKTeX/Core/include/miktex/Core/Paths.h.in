@@ -1,6 +1,6 @@
 /* miktex/Core/Paths.h: hard-coded path names           -*- C++ -*-
 
-   Copyright (C) 1996-2020 Christian Schenk
+   Copyright (C) 1996-2021 Christian Schenk
 
    This file is part of the MiKTeX Core Library.
 
@@ -759,6 +759,7 @@
 #define MIKTEX_PDFTOSRC_EXE MIKTEX_PREFIX "pdftosrc" MIKTEX_EXE_FILE_SUFFIX
 #define MIKTEX_PDFTOTEXT_EXE MIKTEX_PREFIX "pdftotext" MIKTEX_EXE_FILE_SUFFIX
 #define MIKTEX_PDFUNITE_EXE MIKTEX_PREFIX "pdfunite" MIKTEX_EXE_FILE_SUFFIX
+#define MIKTEX_PDVITYPE_EXE MIKTEX_PREFIX "pdvitype" MIKTEX_EXE_FILE_SUFFIX
 #define MIKTEX_PK2BM_EXE MIKTEX_PREFIX "pk2bm" MIKTEX_EXE_FILE_SUFFIX
 #define MIKTEX_PLTOTF_EXE MIKTEX_PREFIX "pltotf" MIKTEX_EXE_FILE_SUFFIX
 #define MIKTEX_PMXAB_EXE MIKTEX_PREFIX "pmxab" MIKTEX_EXE_FILE_SUFFIX

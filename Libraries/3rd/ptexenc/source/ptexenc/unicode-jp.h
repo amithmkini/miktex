@@ -7,6 +7,9 @@
 #define PTEXENC_UNICODE_JP_H
 
 #include <kpathsea/types.h>
+#if defined(MIKTEX) && defined(__cplusplus)
+extern "C" {
+#endif
 
 /* convert a JIS X 0208 char to UCS-2 */
 extern int JIStoUCS2(int jis);
@@ -22,4 +25,7 @@ extern int get_voiced_sound(int ucs2, boolean semi);
 #define U_VOICED		0x3099
 #define U_SEMI_VOICED		0x309A
 
+#if defined(MIKTEX) && defined(__cplusplus)
+}
+#endif
 #endif /* PTEXENC_UNICODE_JP_H */

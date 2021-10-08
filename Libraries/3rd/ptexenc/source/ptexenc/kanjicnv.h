@@ -6,6 +6,9 @@
 #define PTEXENC_KANJICNV_H
 
 #include <kpathsea/types.h>
+#if defined(MIKTEX) && defined(__cplusplus)
+extern "C" {
+#endif
 
 #define HI(x)     ((((int)(x)) >> 8) & 0xff)
 #define LO(x)     ( ((int)(x))       & 0xff)
@@ -35,4 +38,7 @@ extern int EUCtoSJIS(int c);
 /* KUTEN => JIS kanji code conversion */
 extern int KUTENtoJIS(int c);
 
+#if defined(MIKTEX) && defined(__cplusplus)
+}
+#endif
 #endif /* PTEXENC_KANJICNV_H */

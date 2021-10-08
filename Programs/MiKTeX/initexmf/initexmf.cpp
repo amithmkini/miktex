@@ -1457,6 +1457,7 @@ vector<FileLink> miktexFileLinks =
   { MIKTEX_PREFIX "patgen" MIKTEX_EXE_FILE_SUFFIX, { "patgen"} },
   { MIKTEX_PDFTEX_EXE, { "pdftex", MIKTEX_LATEX_EXE, MIKTEX_PDFLATEX_EXE } },
   { MIKTEX_PDFTOSRC_EXE, { "pdftosrc" } },
+  { MIKTEX_PDVITYPE_EXE, { "pdvitype" } },
   { MIKTEX_PK2BM_EXE, { "pk2bm" } },
   { MIKTEX_PLTOTF_EXE, { "pltotf" } },
   { MIKTEX_PMXAB_EXE, { "pmxab" } },

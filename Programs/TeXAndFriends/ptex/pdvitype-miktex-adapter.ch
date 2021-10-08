@@ -40,3 +40,24 @@
   parse_arguments;
   print(banner);
 @z
+
+% _____________________________________________________________________________
+%
+% [14.112] System-dependent changes
+% _____________________________________________________________________________
+
+@x
+This section should be replaced, if necessary, by changes to the program
+that are necessary to make \.{DVItype} work at a particular installation.
+It is usually best to design your change file so that all changes to
+previous sections preserve the section numbering; then everybody's version
+will be consistent with the printed program. More extensive changes,
+which introduce new sections, can be inserted here; then only the index
+itself will get a new section number.
+@^system dependencies@>
+@y
+const n_options = 8; {Pascal won't count array lengths for us.}
+      usage_help (DVITYPE_HELP, nil);
+    end; {Else it was a flag; |getopt| has already done the assignment.}
+@ An element with all zeros always ends the list.
+@z
