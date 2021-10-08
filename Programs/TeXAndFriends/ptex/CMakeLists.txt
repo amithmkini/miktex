@@ -26,12 +26,4 @@ include_directories(BEFORE
 
 include(libkanji.cmake)
 include(pdvitype.cmake)
-
-add_custom_target(ptex-dev ALL
-    DEPENDS
-        ${CMAKE_CURRENT_BINARY_DIR}/dvitype-miktex-n.web        
-        ${CMAKE_CURRENT_BINARY_DIR}/pdvitype-final-n.web
-        ${CMAKE_CURRENT_BINARY_DIR}/pre-pdvitype-n.web
-)
-
-set_property(TARGET ptex-dev PROPERTY FOLDER ${MIKTEX_CURRENT_FOLDER})
+include(ppltotf.cmake)

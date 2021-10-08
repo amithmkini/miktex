@@ -1,6 +1,6 @@
 /* miktex/W2C/Emulation.h:                              -*- C++ -*-
 
-   Copyright (C) 2010-2019 Christian Schenk
+   Copyright (C) 2010-2021 Christian Schenk
 
    This file is part of the MiKTeX W2CEMU Library.
 
@@ -189,6 +189,7 @@ typedef double real;
 #define stringcast(x) ((char *) (x))
 
 #define ucharcast(x) ((unsigned char)(x))
+#define ustringcast(x) ((unsigned char *) (x))
 
 #if defined(MIKTEX_WINDOWS)
 #  define promptfilenamehelpmsg "(Press Enter to retry, or Control-Z to exit"

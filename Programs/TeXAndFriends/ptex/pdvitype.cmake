@@ -135,3 +135,12 @@ add_custom_command(
         web-n
     VERBATIM
 )
+
+add_custom_target(pdvitype-dev ALL
+    DEPENDS
+        ${CMAKE_CURRENT_BINARY_DIR}/dvitype-miktex-n.web        
+        ${CMAKE_CURRENT_BINARY_DIR}/pdvitype-final-n.web
+        ${CMAKE_CURRENT_BINARY_DIR}/pre-pdvitype-n.web
+)
+
+set_property(TARGET pdvitype-dev PROPERTY FOLDER ${MIKTEX_CURRENT_FOLDER})

@@ -1462,6 +1462,7 @@ vector<FileLink> miktexFileLinks =
   { MIKTEX_PLTOTF_EXE, { "pltotf" } },
   { MIKTEX_PMXAB_EXE, { "pmxab" } },
   { MIKTEX_POOLTYPE_EXE, { "pooltype" } },
+  { MIKTEX_PPLTOTF_EXE, { "ppltotf" } },
   { MIKTEX_PREPMX_EXE, { "prepmx" } },
   { MIKTEX_PS2PK_EXE, { "ps2pk" } },
   { MIKTEX_PSBOOK_EXE, { "psbook" } },
