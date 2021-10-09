@@ -25,6 +25,7 @@ include_directories(BEFORE
 )
 
 include(libkanji.cmake)
+include(pbibtex.cmake)
 include(pdvitype.cmake)
 include(ppltotf.cmake)
 include(ptftopl.cmake)
