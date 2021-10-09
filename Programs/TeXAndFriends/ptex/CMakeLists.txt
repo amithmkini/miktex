@@ -27,3 +27,4 @@ include_directories(BEFORE
 include(libkanji.cmake)
 include(pdvitype.cmake)
 include(ppltotf.cmake)
+include(ptftopl.cmake)
