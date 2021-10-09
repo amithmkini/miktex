@@ -1470,6 +1470,7 @@ vector<FileLink> miktexFileLinks =
   { MIKTEX_PSRESIZE_EXE, { "psresize" } },
   { MIKTEX_PSSELECT_EXE, { "psselect" } },
   { MIKTEX_PSTOPS_EXE, { "pstops" } },
+  { MIKTEX_PTFTOPL_EXE, { "ptftopl" } },
   { MIKTEX_REBAR_EXE, { "rebar" } },
   { MIKTEX_SCOR2PRT_EXE, { "scor2prt" } },
   { MIKTEX_SJISCONV_EXE, { "sjisconv" } },
