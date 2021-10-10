@@ -1455,6 +1455,7 @@ vector<FileLink> miktexFileLinks =
   { MIKTEX_OVF2OVP_EXE, { "ovf2ovp" } },
   { MIKTEX_OVP2OVF_EXE, { "ovp2ovf" } },
   { MIKTEX_PREFIX "patgen" MIKTEX_EXE_FILE_SUFFIX, { "patgen"} },
+  { MIKTEX_PBIBTEX_EXE, { "pbibtex" } },
   { MIKTEX_PDFTEX_EXE, { "pdftex", MIKTEX_LATEX_EXE, MIKTEX_PDFLATEX_EXE } },
   { MIKTEX_PDFTOSRC_EXE, { "pdftosrc" } },
   { MIKTEX_PDVITYPE_EXE, { "pdvitype" } },
