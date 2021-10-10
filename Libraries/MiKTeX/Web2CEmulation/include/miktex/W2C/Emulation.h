@@ -197,6 +197,10 @@ typedef double real;
 #  define promptfilenamehelpmsg "(Press Enter to retry, or Control-D to exit"
 #endif
 
+#define vgetc(f) (void)getc(f)
+
+#define ustringcast(x) ((unsigned char*)(x))
+
 /// @}
 
 /* _________________________________________________________________________ */
