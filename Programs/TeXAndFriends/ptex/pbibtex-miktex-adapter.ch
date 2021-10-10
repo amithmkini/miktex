@@ -64,3 +64,15 @@ miktex_initialize_char_tables;
 @y
 for i:=first_text_char to last_text_char do xord[xchr[i]]:=i;
 @z
+
+% _____________________________________________________________________________
+%
+% [8.102]
+% _____________________________________________________________________________
+
+@x
+if (c4p_argc <> 2) then begin
+@y
+parse_arguments;
+if (c4p_argc <> 2) then begin
+@z
