@@ -19,13 +19,20 @@
 
 set(MIKTEX_CURRENT_FOLDER "${MIKTEX_IDE_TEX_AND_FRIENDS_FOLDER}/pTeX")
 
+set(projdir ${CMAKE_CURRENT_SOURCE_DIR})
+
 include_directories(BEFORE
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+set(C4P_FLAGS
+  --declare-c-type=cinttype
+)
+
 include(libkanji.cmake)
-include(pbibtex.cmake)
-include(pdvitype.cmake)
-include(ppltotf.cmake)
-include(ptftopl.cmake)
+
+add_subdirectory(pbibtex)
+add_subdirectory(pdvitype)
+add_subdirectory(ppltotf)
+add_subdirectory(ptftopl)

@@ -1,4 +1,4 @@
-## ppltotf.cmake:
+## CMakeLists.txt:
 ##
 ## Copyright (C) 2021 Christian Schenk
 ## 
@@ -16,6 +16,11 @@
 ## along with this file; if not, write to the Free Software
 ## Foundation, 59 Temple Place - Suite 330, Boston, MA 02111-1307,
 ## USA.
+
+include_directories(BEFORE
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
 set(ppltotf_target_name ppltotf)
 
@@ -64,13 +69,13 @@ add_custom_command(
         ${MIKTEX_PREFIX}tie
         -m  ${CMAKE_CURRENT_BINARY_DIR}/ppltotf-final.web
         ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/source/ppltotf.ch
+        ${projdir}/source/ppltotf.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     DEPENDS
         ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/ppltotf-miktex.ch
         ${MIKTEX_PREFIX}tie
+        ${projdir}/source/ppltotf.ch
     VERBATIM
 )
 

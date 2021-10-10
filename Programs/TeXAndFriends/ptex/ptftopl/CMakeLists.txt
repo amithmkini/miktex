@@ -1,4 +1,4 @@
-## ptftopl.cmake:
+## CMakeLists.txt:
 ##
 ## Copyright (C) 2021 Christian Schenk
 ## 
@@ -16,6 +16,11 @@
 ## along with this file; if not, write to the Free Software
 ## Foundation, 59 Temple Place - Suite 330, Boston, MA 02111-1307,
 ## USA.
+
+include_directories(BEFORE
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
 set(ptftopl_target_name ptftopl)
 
@@ -64,13 +69,13 @@ add_custom_command(
         ${MIKTEX_PREFIX}tie
         -m  ${CMAKE_CURRENT_BINARY_DIR}/ptftopl-final.web
         ${CMAKE_CURRENT_BINARY_DIR}/pre-ptftopl.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/source/ptftopl.ch
+        ${projdir}/source/ptftopl.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     DEPENDS
         ${CMAKE_CURRENT_BINARY_DIR}/pre-ptftopl.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/ptftopl-miktex.ch
         ${MIKTEX_PREFIX}tie
+        ${projdir}/source/ptftopl.ch
     VERBATIM
 )
 

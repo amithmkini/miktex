@@ -38,7 +38,7 @@
 
 #include "pbibtex.h"
 
-namespace pbibtex {
+namespace bibtex {
 #include <miktex/bibtex.defaults.h>
 }
 
