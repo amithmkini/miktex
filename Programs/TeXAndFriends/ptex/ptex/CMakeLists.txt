@@ -25,18 +25,19 @@ include_directories(BEFORE
 set(ptex_target_name ptex)
 
 set(tex_miktex_change_files
-  ${MLTEX_MIKTEX_CH}
-  ${TEX_MIKTEX_CH}
-  ${TEX_MIKTEX_HASH_CH}
-  ${TEX_MIKTEX_HYPH_CH}
-  ${TEX_MIKTEX_POOL_CH}
-  ${TEX_MIKTEX_QUIET_CH}
-  ${TEX_MIKTEX_SRC_CH}
-  ${TEX_MIKTEX_STAT_CH}
-  ${TEX_MIKTEX_WRITE18_CH}
-  ${TRACINGSTACKLEVELS_CH}
-  ${PARTOKEN_CH}
-  ${TEX_MIKTEX_FINISH_CH}
+    ${MLTEX_MIKTEX_CH}
+    ${TEX_MIKTEX_CONSTANTS_CH}
+    ${TEX_MIKTEX_CH}
+    ${TEX_MIKTEX_HASH_CH}
+    ${TEX_MIKTEX_HYPH_CH}
+    ${TEX_MIKTEX_POOL_CH}
+    ${TEX_MIKTEX_QUIET_CH}
+    ${TEX_MIKTEX_SRC_CH}
+    ${TEX_MIKTEX_STAT_CH}
+    ${TEX_MIKTEX_WRITE18_CH}
+    ${TRACINGSTACKLEVELS_CH}
+    ${PARTOKEN_CH}
+    ${TEX_MIKTEX_FINISH_CH}
 )
 
 set(tex_web_file ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEX_DIR}/source/tex.web)
@@ -48,7 +49,7 @@ add_custom_command(
         ${MIKTEX_PREFIX}tie
         -m ${CMAKE_CURRENT_BINARY_DIR}/tex-miktex.web
         ${tex_web_file}
-        ${tex_miktex_change_file}
+        ${tex_miktex_change_files}
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -83,13 +84,13 @@ add_custom_command(
         ${MIKTEX_PREFIX}tie
         -m  ${CMAKE_CURRENT_BINARY_DIR}/ptex-final.web
         ${CMAKE_CURRENT_BINARY_DIR}/pre-ptex.web
-        ${projdir}/source/ptex.ch
+        ${projdir}/source/ptex-base.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     DEPENDS
         ${CMAKE_CURRENT_BINARY_DIR}/pre-ptex.web
         ${MIKTEX_PREFIX}tie
-        ${projdir}/source/ptex.ch
+        ${projdir}/source/ptex-base.ch
     VERBATIM
 )
 

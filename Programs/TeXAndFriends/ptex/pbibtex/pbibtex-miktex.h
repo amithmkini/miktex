@@ -265,12 +265,6 @@ public:
     }
 
 public:
-    unsigned long MIKTEXTHISCALL GetHelpId() const override
-    {
-        return MIKTEXHELP_BIBTEX;
-    }
-
-public:
     void BufferSizeExceeded() const override
     {
         PBIBTEXPROG.bufferoverflow();

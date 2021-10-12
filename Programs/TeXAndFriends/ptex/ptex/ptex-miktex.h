@@ -89,31 +89,25 @@ public:
 public:
     MiKTeX::Util::PathName GetMemoryDumpFileName() const override
     {
-        return MiKTeX::Util::PathName("tex.fmt");
+        return MiKTeX::Util::PathName("ptex.fmt");
     }
 
 public:
     std::string GetInitProgramName() const override
     {
-        return "initex";
+        return "iniptex";
     }
 
 public:
     std::string GetVirginProgramName() const override
     {
-        return "virtex";
+        return "virptex";
     }
 
 public:
     std::string TheNameOfTheGame() const override
     {
-        return "TeX";
-    }
-
-public:
-    unsigned long GetHelpId() const override
-    {
-        return MIKTEXHELP_TEX;
+        return "pTeX";
     }
 };
 

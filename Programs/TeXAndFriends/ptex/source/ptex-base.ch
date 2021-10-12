@@ -4250,8 +4250,8 @@ else if type(tail)<>glue_node then tail_append(new_penalty(inf_penalty))
 @!chain:boolean; {chain current line and next line?}
 @z
 
-% chain ¤¬¿¿¤Î¾ì¹ç¡¢¸å¤í¤Ë cur_kanji_skip ¤¬ÁÞÆþ¤µ¤ì¤ë¤Î¤Ç¡¢¤³¤³¤Ç
-% break_width ¤«¤é°ú¤¤¤Æ¤ª¤«¤Ê¤±¤ì¤Ð¤Ê¤é¤Ê¤¤¡£
+% chain ï¿½ï¿½ï¿½ï¿½ï¿½Î¾ï¿½ç¡¢ï¿½ï¿½ï¿½ï¿½ï¿½ cur_kanji_skip ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¤Ç¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+% break_width ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½Ð¤Ê¤ï¿½Ê¤ï¿½ï¿½ï¿½
 @x [38.837] l.17125 - pTeX: add kanji_skip width, ita_kern
 begin no_break_yet:=false; do_all_six(set_break_width_to_background);
 s:=cur_p;
@@ -4392,10 +4392,10 @@ mark_node,ins_node,adjust_node: do_nothing;
 disp_node,mark_node,ins_node,adjust_node: do_nothing;
 @z
 
-% ¤³¤³¤Ç¡¢Ï¢Â³¤¹¤ë´Á»ú¥³¡¼¥É´Ö¤Ë cur_kanji_skip ¤òÁÞÆþ¤¹¤ë¡£
-% penalty_node ¤ä box_node ¤Ë¤Ï¡¢adjust_hlist ¥ë¡¼¥Á¥ó¤Ë¤è¤Ã¤Æ´û¤Ë¼ÂºÝ¤Î
-% glue_node ¤¬ÁÞÆþ¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤È²¾Äê¤·¤Æ¤¤¤ë¡£
-% chain ¤Ï¡¢try_break ¤Ç cur_kanji_skip ¤Î¥¢¥¸¥ã¥¹¥È¤Î¤¿¤á¤Ë»È¤ï¤ì¤ë¡£
+% ï¿½ï¿½ï¿½ï¿½ï¿½Ç¡ï¿½Ï¢Â³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É´Ö¤ï¿½ cur_kanji_skip ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¡£
+% penalty_node ï¿½ï¿½ box_node ï¿½Ë¤Ï¡ï¿½adjust_hlist ï¿½ë¡¼ï¿½ï¿½ï¿½ï¿½Ë¤ï¿½Ã¤Æ´ï¿½ï¿½Ë¼ÂºÝ¤ï¿½
+% glue_node ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½Î¤È²ï¿½ï¿½ê¤·ï¿½Æ¤ï¿½ï¿½ë¡£
+% chain ï¿½Ï¡ï¿½try_break ï¿½ï¿½ cur_kanji_skip ï¿½Î¥ï¿½ï¿½ï¿½ï¿½ã¥¹ï¿½È¤Î¤ï¿½ï¿½ï¿½Ë»È¤ï¿½ï¿½ë¡£
 @x [39.867] l.17708 - pTeX: add kanji char width
 @<Advance \(c)|cur_p| to the node following the present string...@>=
 begin prev_p:=cur_p;
