@@ -1,4 +1,4 @@
-%% ppltotf-miktex-adapter.ch:
+%% ppltotf-miktex-adapter.ch: pltotf-miktex.web/ppltotf.ch adapter
 %% 
 %% Copyright (C) 2021 Christian Schenk
 %% 

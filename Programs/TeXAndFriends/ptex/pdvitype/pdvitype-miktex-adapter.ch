@@ -1,4 +1,4 @@
-%% pdvitype-miktex-adapter.ch:
+%% pdvitype-miktex-adapter.ch: dvitype-miktex.web/pdvitype.ch adapter
 %% 
 %% Copyright (C) 2021 Christian Schenk
 %% 

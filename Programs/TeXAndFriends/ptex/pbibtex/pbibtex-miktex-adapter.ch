@@ -1,4 +1,4 @@
-%% pbibtex-miktex-adapter.ch:
+%% pbibtex-miktex-adapter.ch: bibtex-miktex.web/pbibtex.ch adapter
 %% 
 %% Copyright (C) 2021 Christian Schenk
 %% 

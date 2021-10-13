@@ -1,4 +1,4 @@
-%% ptex-miktex-adapter.ch:
+%% ptex-miktex-adapter.ch: tex-miktex.web/ptex-base.ch adapter
 %% 
 %% Copyright (C) 2021 Christian Schenk
 %% 
