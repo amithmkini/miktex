@@ -12,7 +12,11 @@
 #endif
 #include <texmfmp.h>
 
+#if defined(MIKTEX) && !defined(FMT_COMPRESS)
+void dump_kanji(FILE* fp)
+#else
 void dump_kanji (gzFile fp)
+#endif
 {
     char buffer[12];
     const char *p = get_enc_string ();
@@ -26,16 +30,43 @@ void dump_kanji (gzFile fp)
     strcpy (buffer, p);
     for (len++; len < 12; len++)
         buffer[len] = 0;
+#if defined(MIKTEX)
+#if !defined(FMT_COMPRESS)
+    if (fwrite (buffer, 1, 12, fp) != 12)
+    {
+      fprintf (stderr, "! Could not dump kanji.\n");
+      uexit (1);
+    }
+#else
+    TODO();
+#endif
+#else
     do_dump (buffer, 1, 12, fp);
+#endif
 }
 
+#if defined(MIKTEX) && !defined(FMT_COMPRESS)
+void undump_kanji(FILE* fp)
+#else
 void undump_kanji (gzFile fp)
+#endif
 {
     char buffer[12];
     char *p;
     int i;
 
+#if defined(MIKTEX)
+#if !defined(FMT_COMPRESS)
+    if (fread (buffer, 1, 12, fp) != 12)
+    {
+        fprintf (stderr, "! Could not undump kanji.\n");
+        uexit (1);
+    }
+#else
+    TODO();
+#endif
     do_undump (buffer, 1, 12, fp);
+#endif
     buffer[11] = 0;  /* force string termination, just in case */
 
     p = strchr (buffer, '.');

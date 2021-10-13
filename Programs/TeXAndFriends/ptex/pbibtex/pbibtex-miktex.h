@@ -42,12 +42,7 @@ namespace bibtex {
 #include <miktex/bibtex.defaults.h>
 }
 
-#include "kanji.h"
-
-#define hi Hi
-#define lo Lo
-#define fromdvi fromDVI
-#define tobuff toBUFF
+#include <miktex/ptex.h>
 
 extern PBIBTEXPROGCLASS PBIBTEXPROG;
 

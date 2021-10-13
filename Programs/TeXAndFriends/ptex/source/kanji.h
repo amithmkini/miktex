@@ -26,9 +26,6 @@
 #define notkanjicharseq not_kanji_char_seq
 
 /* functions */
-#if defined(MIKTEX) && defined(__cplusplus)
-extern "C" {
-#endif
 #define Hi(x) (((x) >> 8) & 0xff)
 #define Lo(x) ((x) & 0xff)
 
@@ -73,12 +70,14 @@ extern void init_default_kanji (const_string file_str, const_string internal_str
 #define inputline2(fp,buff,pos,size) input_line2(fp,buff,pos,size,NULL)
 #endif
 
+#if defined(MIKTEX) && !defined(FMT_COMPRESS)
+extern void dump_kanji(FILE* fp);
+extern void undump_kanji(FILE* fp);
+#else
 extern void dump_kanji (gzFile fp);
 extern void undump_kanji (gzFile fp);
+#endif
 #define dumpkanji dump_kanji
 #define undumpkanji undump_kanji
 
-#if defined(MIKTEX) && defined(__cplusplus)
-}
-#endif
 #endif /* not KANJI_H */

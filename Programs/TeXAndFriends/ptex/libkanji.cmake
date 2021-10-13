@@ -23,6 +23,12 @@ set(libkanji_sources
     ${CMAKE_CURRENT_SOURCE_DIR}/source/kanji_dump.c
 )
 
+set_source_files_properties(
+    ${CMAKE_CURRENT_SOURCE_DIR}/source/kanji.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/source/kanji_dump.c
+    PROPERTIES LANGUAGE CXX
+)
+
 add_library(ptex_kanji STATIC ${libkanji_sources})
 
 target_include_directories(ptex_kanji

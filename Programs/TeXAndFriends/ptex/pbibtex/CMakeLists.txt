@@ -79,6 +79,12 @@ add_custom_command(
     VERBATIM
 )
 
+configure_file(
+    ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_BIBTEX_DIR}/dyn.sed
+    ${CMAKE_CURRENT_BINARY_DIR}/dyn.sed
+    COPYONLY
+)
+
 set(pbibtex_web_file ${CMAKE_CURRENT_BINARY_DIR}/pbibtex-final.web)
 
 create_web_app(pBibTeX)

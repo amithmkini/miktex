@@ -27,15 +27,7 @@
 
 #include <miktex/TeXAndFriends/WebApp>
 
-#include "kanji.h"
-
-#define hi Hi
-#define lo Lo
-#define frombuff fromBUFF
-#define fromdvi fromDVI
-#define fromjis fromJIS
-#define tobuff toBUFF
-#define todvi toDVI
+#include <miktex/ptex.h>
 
 #define OPT_KANJI 1000
 

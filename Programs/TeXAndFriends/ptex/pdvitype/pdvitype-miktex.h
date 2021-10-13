@@ -27,12 +27,7 @@
 
 #include <miktex/TeXAndFriends/WebApp>
 
-#include "kanji.h"
-
-#define hi Hi
-#define lo Lo
-#define fromdvi fromDVI
-#define tobuff toBUFF
+#include <miktex/ptex.h>
 
 #define OPT_KANJI 1000
 #define OPT_MAX_PAGES 1001
