@@ -65,6 +65,7 @@ void undump_kanji (gzFile fp)
 #else
     TODO();
 #endif
+#else
     do_undump (buffer, 1, 12, fp);
 #endif
     buffer[11] = 0;  /* force string termination, just in case */

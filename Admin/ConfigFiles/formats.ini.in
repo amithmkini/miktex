@@ -213,6 +213,12 @@
 	description = plain pdfTeX
 	input = pdftex.ini
 
+[ptex]
+
+	compiler = ptex
+	description = plain pTeX 
+	input = ptex.ini
+
 [tex]
 
 	compiler = tex

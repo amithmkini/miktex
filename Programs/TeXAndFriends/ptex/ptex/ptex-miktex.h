@@ -40,17 +40,48 @@
 
 #include "ptexd.h"
 
-#if defined(MIKTEX_WINDOWS)
-#include "ptex.rc"
-#endif
-
-#if !defined(MIKTEXHELP_PTEX)
-#include <miktex/Core/Help>
-#endif
-
 #include <miktex/ptex.h>
 
 extern PTEXPROGCLASS PTEXPROG;
+
+class MemoryHandlerImpl :
+    public MiKTeX::TeXAndFriends::TeXMemoryHandlerImpl<PTEXPROGCLASS>
+{
+public:
+  MemoryHandlerImpl(PTEXPROGCLASS& program, MiKTeX::TeXAndFriends::TeXMFApp& texmfapp) :
+      TeXMemoryHandlerImpl<PTEXPROGCLASS>(program, texmfapp)
+  {
+  }
+
+public:
+    void Allocate(const std::unordered_map<std::string, int>& userParams) override
+    {
+        TeXMemoryHandlerImpl<PTEXPROGCLASS>::Allocate(userParams);
+        MIKTEX_ASSERT(program.constfontbase == 0);
+        size_t nFonts = program.fontmax - program.constfontbase;
+        AllocateArray("fontdir", program.fontdir, nFonts);
+        AllocateArray("fontnumext", program.fontnumext, nFonts);
+        AllocateArray("ctypebase", program.ctypebase, nFonts);
+    }
+
+public:
+    void Free() override
+    {
+        TeXMemoryHandlerImpl<PTEXPROGCLASS>::Free();
+        FreeArray("fontdir", program.fontdir);
+        FreeArray("fontnumext", program.fontnumext);
+        FreeArray("ctypebase", program.ctypebase);
+    }
+
+public:
+    void Check() override
+    {
+        TeXMemoryHandlerImpl<PTEXPROGCLASS>::Check();
+        MIKTEX_ASSERT_VALID_HEAP_POINTER_OR_NIL(program.fontdir);
+        MIKTEX_ASSERT_VALID_HEAP_POINTER_OR_NIL(program.fontnumext);
+        MIKTEX_ASSERT_VALID_HEAP_POINTER_OR_NIL(program.ctypebase);
+    }
+};
 
 class PTEXAPPCLASS :
     public MiKTeX::TeXAndFriends::TeXApp
@@ -74,7 +105,7 @@ private:
     MiKTeX::TeXAndFriends::StringHandlerImpl<PTEXPROGCLASS> stringHandler{ PTEXPROG };
 
 private:
-    MiKTeX::TeXAndFriends::TeXMemoryHandlerImpl<PTEXPROGCLASS> memoryHandler{ PTEXPROG, *this };
+    MemoryHandlerImpl memoryHandler{ PTEXPROG, *this };
 
 public:
     void Init(std::vector<char*>& args) override
@@ -87,10 +118,23 @@ public:
         SetStringHandler(&stringHandler);
         SetTeXMFMemoryHandler(&memoryHandler);
         TeXApp::Init(args);
-#if defined(IMPLEMENT_TCX)
+        kpse_set_program_name(args[0], nullptr);
         EnableFeature(MiKTeX::TeXAndFriends::Feature::EightBitChars);
+#if defined(IMPLEMENT_TCX)
         EnableFeature(MiKTeX::TeXAndFriends::Feature::TCX);
 #endif
+    }
+
+public:
+    void AllocateMemory() override
+    {
+        TeXApp::AllocateMemory();
+    }
+
+public:
+    void FreeMemory() override
+    {
+        TeXApp::FreeMemory();
     }
 
 public:
