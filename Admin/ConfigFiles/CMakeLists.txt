@@ -1,6 +1,6 @@
 ## CMakeLists.txt                                       -*- CMake -*-
 ##
-## Copyright (C) 2006-2020 Christian Schenk
+## Copyright (C) 2006-2021 Christian Schenk
 ## 
 ## This file is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published
@@ -84,6 +84,7 @@ set(main_ini_names
   pdfxmltex
   pdfxtex
   platex
+  ptex
   t4ht
   tex
   tex4ht
