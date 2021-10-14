@@ -52,11 +52,11 @@ add_custom_command(
         ${MIKTEX_PREFIX}tie
         -m ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
         ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/ppltotf-miktex-adapter.ch
+        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ppltotf-adapter.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     DEPENDS
-        ${CMAKE_CURRENT_SOURCE_DIR}/ppltotf-miktex-adapter.ch
+        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ppltotf-adapter.ch
         ${MIKTEX_PREFIX}tie
         ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex.web
     VERBATIM

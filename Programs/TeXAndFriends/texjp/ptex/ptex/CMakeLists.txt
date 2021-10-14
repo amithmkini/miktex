@@ -100,11 +100,11 @@ add_custom_command(
         ${MIKTEX_PREFIX}tie
         -m ${CMAKE_CURRENT_BINARY_DIR}/pre-ptex.web
         ${CMAKE_CURRENT_BINARY_DIR}/tex-miktex.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/ptex-miktex-adapter.ch
+        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ptex-adapter.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     DEPENDS
-        ${CMAKE_CURRENT_SOURCE_DIR}/ptex-miktex-adapter.ch
+        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ptex-adapter.ch
         ${MIKTEX_PREFIX}tie
         ${CMAKE_CURRENT_BINARY_DIR}/tex-miktex.web
     VERBATIM

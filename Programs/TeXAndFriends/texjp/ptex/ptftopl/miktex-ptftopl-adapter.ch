@@ -1,4 +1,4 @@
-%% pbibtex-miktex-adapter.ch: bibtex-miktex.web/pbibtex.ch adapter
+%% miktex-ptftopl-adapter.ch: tftopl-miktex.web to ptftopl.ch adapter
 %% 
 %% Copyright (C) 2021 Christian Schenk
 %% 
@@ -16,88 +16,100 @@
 %% along with This file; if not, write to the Free Software Foundation,
 %% 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
+@x
+\def\title{TF\lowercase{to}PL}
+@y
+\def\title{TF\lowercase{to}PL changes for C}
+@z
+
 % _____________________________________________________________________________
 %
 % [1.1] Introduction
 % _____________________________________________________________________________
 
 @x
-@d banner=='This is BibTeX, Version 0.99d' {printed when the program starts}
+@d banner=='This is TFtoPL, Version 3.3' {printed when the program starts}
 @y
-@d my_name=='bibtex'
-@d banner=='This is BibTeX, Version 0.99d' {printed when the program starts}
+@d my_name=='tftopl'
+@d banner=='This is TFtoPL, Version 3.3' {printed when the program starts}
 @z
 
 % _____________________________________________________________________________
 %
-% [2.10] The main program
+% [1.2]
 % _____________________________________________________________________________
 
 @x
-  miktex_print_miktex_banner(output);
-  print_newline;
+  begin print(banner);
 @y
-  miktex_print_miktex_banner(output);
-  print_newline;
-  print (banner);
+  begin
+    tfm_file_array := xmalloc_array (byte, 1002);
+    parse_arguments;
+  print(banner);
 @z
 
 % _____________________________________________________________________________
 %
-% [3.27]
+% [2.7]
 % _____________________________________________________________________________
 
 @x
-do_nothing;
+if (not miktex_open_tfm_file(tfm_file, c4p_argv[1])) then begin
 @y
-for i:=0 to @'37 do xchr[i]:=chr(i);
-for i:=@'177 to @'377 do xchr[i]:=chr(i);
+  print_ln (version_string);
+if (not miktex_open_tfm_file(tfm_file, c4p_argv[1])) then begin
 @z
 
 % _____________________________________________________________________________
 %
-% [3.28]
+% [3.19]
 % _____________________________________________________________________________
 
 @x
-miktex_initialize_char_tables;
+@<Types...@>=
+@!byte=0..255; {unsigned eight-bit quantity}
+@!index=0..tfm_size; {address of a byte in |tfm|}
+
+@ @<Glob...@>=
+@!tfm:array [-1000..tfm_size] of byte; {the input data all goes here}
 @y
-for i:=first_text_char to last_text_char do xord[xchr[i]]:=i;
+@d index == index_type
+
+@<Types...@>=
+@!byte=0..255; {unsigned eight-bit quantity}
+@!index=0..tfm_size; {address of a byte in |tfm|}
+
+@ @<Glob...@>=
+@!tfm:array [-1000..tfm_size] of byte; {the input data all goes here}
+@!tfm_file_array: ^byte; {the input data all goes here}
 @z
 
 % _____________________________________________________________________________
 %
-% [8.102]
+% [7.99]
 % _____________________________________________________________________________
 
 @x
-if (c4p_argc <> 2) then begin
+@p begin
+c4p_begin_try_block(final_end);
+initialize;@/
 @y
-parse_arguments;
-if (c4p_argc <> 2) then begin
+@p begin initialize;@/
+c4p_begin_try_block(final_end);
+initialize;@/
 @z
 
 % _____________________________________________________________________________
 %
-% [16.467] System-dependent changes
+% [8.100] System-dependent changes
 % _____________________________________________________________________________
 
 @x
-This section should be replaced, if necessary, by changes to the program
-that are necessary to make \BibTeX\ work at a particular installation.
-It is usually best to design your change file so that all changes to
-previous sections preserve the section numbering; then everybody's version
-will be consistent with the printed program. More extensive changes,
-which introduce new sections, can be inserted here; then only the index
-itself will get a new section number.
+@ We use an ``enumerated'' type to store the information.
 @y
 const n_options = 4; {Pascal won't count array lengths for us.}
-      usage_help (BIBTEX_HELP, nil);
+      usage_help (TFTOPL_HELP, nil);
     end; {Else it was a flag; |getopt| has already done the assignment.}
-long_options[current_option].name := 'version';
-long_options[current_option].has_arg := 0;
-long_options[current_option].flag := 0;
-long_options[current_option].val := 0;
-incr (current_option);
-begin kpse_set_program_name (argv[0], 'bibtex');
+@ An element with all zeros always ends the list.
+@ We use an ``enumerated'' type to store the information.
 @z

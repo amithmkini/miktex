@@ -1,4 +1,4 @@
-%% pdvitype-miktex-adapter.ch: dvitype-miktex.web/pdvitype.ch adapter
+%% miktex-ppltotf-adapter.ch: pltotf-miktex.web to ppltotf.ch adapter
 %% 
 %% Copyright (C) 2021 Christian Schenk
 %% 
@@ -16,21 +16,27 @@
 %% along with This file; if not, write to the Free Software Foundation,
 %% 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
+@x
+\def\title{PL\lowercase{to}TF}
+@y
+\def\title{PL$\,$\lowercase{to}$\,$TF changes for C}
+@z
+
 % _____________________________________________________________________________
 %
 % [1.1] Introduction
 % _____________________________________________________________________________
 
 @x
-@d banner=='This is DVItype, Version 3.6' {printed when the program starts}
+@d banner=='This is PLtoTF, Version 3.6' {printed when the program starts}
 @y
-@d my_name=='dvitype'
-@d banner=='This is DVItype, Version 3.6' {printed when the program starts}
+@d my_name=='pltotf'
+@d banner=='This is PLtoTF, Version 3.6' {printed when the program starts}
 @z
 
 % _____________________________________________________________________________
 %
-% [1.3]
+% [1.2]
 % _____________________________________________________________________________
 
 @x
@@ -43,12 +49,24 @@
 
 % _____________________________________________________________________________
 %
-% [14.112] System-dependent changes
+% [2.6]
+% _____________________________________________________________________________
+
+@x
+c4p_fopen(pl_file,c4p_argv[1],c4p_r_mode,true);reset(pl_file);
+@y
+c4p_fopen(pl_file,c4p_argv[1],c4p_r_mode,true);reset(pl_file);
+  print_ln (version_string);
+@z
+
+% _____________________________________________________________________________
+%
+% [12.148] System-dependent changes
 % _____________________________________________________________________________
 
 @x
 This section should be replaced, if necessary, by changes to the program
-that are necessary to make \.{DVItype} work at a particular installation.
+that are necessary to make \.{PLtoTF} work at a particular installation.
 It is usually best to design your change file so that all changes to
 previous sections preserve the section numbering; then everybody's version
 will be consistent with the printed program. More extensive changes,
@@ -56,8 +74,8 @@ which introduce new sections, can be inserted here; then only the index
 itself will get a new section number.
 @^system dependencies@>
 @y
-const n_options = 8; {Pascal won't count array lengths for us.}
-      usage_help (DVITYPE_HELP, nil);
+const n_options = 3; {Pascal won't count array lengths for us.}
+      usage_help (PLTOTF_HELP, nil);
     end; {Else it was a flag; |getopt| has already done the assignment.}
 @ An element with all zeros always ends the list.
 @z
