@@ -1,4 +1,4 @@
-%% ptex-miktex.ch:
+%% miktex-ptex.ch:
 %% 
 %% Copyright (C) 2021 Christian Schenk
 %% 

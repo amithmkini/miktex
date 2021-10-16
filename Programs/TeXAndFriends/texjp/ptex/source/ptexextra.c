@@ -3,7 +3,7 @@
    This file is public domain.  */
 
 #if defined(MIKTEX)
-#include "ptex-miktex.h"
+#include "miktex-ptex.h"
 using namespace MiKTeX::TeXAndFriends;
 #else
 #define	EXTERN /* Instantiate data from ptexd.h here.  */

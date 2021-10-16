@@ -1,4 +1,4 @@
-/* pdvitype-miktex.h:
+/* miktex-pdvitype.h:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -19,11 +19,7 @@
 
 #pragma once
 
-#include "pdvitype-miktex-config.h"
-
-#if defined(MIKTEX_WINDOWS)
-#include "pdvitype.rc"
-#endif
+#include "miktex-pdvitype-config.h"
 
 #include <miktex/TeXAndFriends/WebApp>
 
@@ -35,9 +31,6 @@
 #define OPT_OUT_MODE 1003
 #define OPT_RESOLUTION 1004
 #define OPT_START_THERE 1005
-
-using namespace MiKTeX::Core;
-using namespace MiKTeX::TeXAndFriends;
 
 extern PDVITYPEPROGCLASS PDVITYPEPROG;
 

@@ -1,4 +1,4 @@
-/* pdvitype-version.h:
+/* miktex-ptftopl-version.h:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -21,9 +21,9 @@
 #define MIKTEX_COMP_MINOR_VERSION 0
 #define MIKTEX_COMP_PATCH_VERSION 0
 
-#define MIKTEX_COMP_ID "miktex-pdvitype"
+#define MIKTEX_COMP_ID "miktex-ptftopl"
 
-#define MIKTEX_COMP_ORIG_VERSION_STR "3.6-p0.5"
+#define MIKTEX_COMP_ORIG_VERSION_STR "3.3-p2.0"
 
 #define MIKTEX_COMP_COPYRIGHT_STR ""
 

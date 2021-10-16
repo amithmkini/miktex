@@ -1,4 +1,4 @@
-/* ptex-version.h:
+/* miktex-ptex-version.h:
 
    Copyright (C) 2021 Christian Schenk
 

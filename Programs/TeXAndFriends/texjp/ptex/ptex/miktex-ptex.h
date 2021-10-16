@@ -1,4 +1,4 @@
-/* ptex-miktex.h:
+/* miktex-ptex.h:
 
    Copyright (C) 1991-2021 Christian Schenk
 
@@ -19,14 +19,14 @@
 
 #pragma once
 
-#include "ptex-miktex-config.h"
+#include "miktex-ptex-config.h"
 
 #if defined(MIKTEX_WINDOWS)
 #  define MIKTEX_UTF8_WRAP_ALL 1
 #  include <miktex/utf8wrap.h>
 #endif
 
-#include "ptex-version.h"
+#include "miktex-ptex-version.h"
 
 #include <miktex/TeXAndFriends/CharacterConverterImpl>
 #include <miktex/TeXAndFriends/ErrorHandlerImpl>
@@ -181,7 +181,7 @@ inline void miktexreallocatenameoffile(size_t n)
     PTEXPROG.nameoffile = reinterpret_cast<char*>(PTEXAPP.GetTeXMFMemoryHandler()->ReallocateArray("name_of_file", PTEXPROG.nameoffile, sizeof(*PTEXPROG.nameoffile), n, MIKTEX_SOURCE_LOCATION()));
 }
 
-#if defined(PTEX_MIKTEX_CPP)
+#if defined(MIKTEX_PTEX_CPP)
 #define PTEX_PROG_VAR2(alias, name, type) type& alias = PTEXPROG.name
 #define PTEX_PROG_VAR(name, type) type& name = PTEXPROG.name
 #else

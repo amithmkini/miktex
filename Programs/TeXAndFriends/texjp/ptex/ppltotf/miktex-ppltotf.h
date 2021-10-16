@@ -1,4 +1,4 @@
-/* ppltotf-miktex.h:
+/* miktex-ppltotf.h:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -19,20 +19,13 @@
 
 #pragma once
 
-#include "ppltotf-miktex-config.h"
-
-#if defined(MIKTEX_WINDOWS)
-#include "ppltotf.rc"
-#endif
+#include "miktex-ppltotf-config.h"
 
 #include <miktex/TeXAndFriends/WebApp>
 
 #include <miktex/ptex.h>
 
 #define OPT_KANJI 1000
-
-using namespace MiKTeX::Core;
-using namespace MiKTeX::TeXAndFriends;
 
 extern PPLTOTFPROGCLASS PPLTOTFPROG;
 

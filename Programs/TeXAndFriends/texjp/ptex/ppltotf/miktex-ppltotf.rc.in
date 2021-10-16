@@ -1,4 +1,4 @@
-/* ptftopl.rc:
+/* miktex-ppltotf.rc:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -19,10 +19,10 @@
 
 #pragma code_page(65001)
 
-#include "ptftopl-version.h"
+#include "miktex-ppltotf-version.h"
 
-#define VER_FILEDESCRIPTION_STR "pTFtoPL - a TFM file disassembler for pTeX"
-#define VER_INTERNALNAME_STR "ptftopl"
-#define VER_ORIGINALFILENAME_STR "miktex-ptftopl.exe"
+#define VER_FILEDESCRIPTION_STR "pPLtoTF - a TFM file assembler for pTeX"
+#define VER_INTERNALNAME_STR "ppltotf"
+#define VER_ORIGINALFILENAME_STR "miktex-ppltotf.exe"
 
 #include "miktex/win/version.rc"

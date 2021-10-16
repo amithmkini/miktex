@@ -1,4 +1,4 @@
-/* ptftopl-miktex.h:
+/* miktex-ptftopl.h:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -19,20 +19,13 @@
 
 #pragma once
 
-#include "ptftopl-miktex-config.h"
-
-#if defined(MIKTEX_WINDOWS)
-#include "ptftopl.rc"
-#endif
+#include "miktex-ptftopl-config.h"
 
 #include <miktex/TeXAndFriends/WebApp>
 
 #include <miktex/ptex.h>
 
 #define OPT_KANJI 1000
-
-using namespace MiKTeX::Core;
-using namespace MiKTeX::TeXAndFriends;
 
 extern PTFTOPLPROGCLASS PTFTOPLPROG;
 

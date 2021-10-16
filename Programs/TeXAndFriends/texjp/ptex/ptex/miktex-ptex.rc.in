@@ -1,4 +1,4 @@
-/* pdvitype.rc:
+/* miktex-ptex.rc:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -19,10 +19,10 @@
 
 #pragma code_page(65001)
 
-#include "pdvitype-version.h"
+#include "miktex-ptex-version.h"
 
-#define VER_FILEDESCRIPTION_STR "pDVItype - a DVI file disassembler for pTeX"
-#define VER_INTERNALNAME_STR "pdvitype"
-#define VER_ORIGINALFILENAME_STR "miktex-pdvitype.exe"
+#define VER_FILEDESCRIPTION_STR "pTeX - a document compiler intended to produce typesetting Japanese of high quality"
+#define VER_INTERNALNAME_STR "ptex"
+#define VER_ORIGINALFILENAME_STR "miktex-ptex.exe"
 
 #include "miktex/win/version.rc"

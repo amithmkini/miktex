@@ -1,4 +1,4 @@
-/* ppltotf.rc:
+/* miktex-pbibtex.rc:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -19,10 +19,10 @@
 
 #pragma code_page(65001)
 
-#include "ppltotf-version.h"
+#include "miktex-pbibtex-version.h"
 
-#define VER_FILEDESCRIPTION_STR "pPLtoTF - a TFM file assembler for pTeX"
-#define VER_INTERNALNAME_STR "ppltotf"
-#define VER_ORIGINALFILENAME_STR "miktex-ppltotf.exe"
+#define VER_FILEDESCRIPTION_STR "pBibTeX - process bibliographies for latex, etc for pTeX"
+#define VER_INTERNALNAME_STR "pbibtex"
+#define VER_ORIGINALFILENAME_STR "miktex-pbibtex.exe"
 
 #include "miktex/win/version.rc"

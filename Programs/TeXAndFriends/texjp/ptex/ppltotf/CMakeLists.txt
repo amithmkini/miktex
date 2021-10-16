@@ -17,6 +17,8 @@
 ## Foundation, 59 Temple Place - Suite 330, Boston, MA 02111-1307,
 ## USA.
 
+set(MIKTEX_CURRENT_FOLDER ${MIKTEX_CURRENT_FOLDER}/pPLtoTF)
+
 include_directories(BEFORE
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -24,60 +26,7 @@ include_directories(BEFORE
 
 set(ppltotf_target_name ppltotf)
 
-set(pltotf_miktex_change_file ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/pltotf-miktex.ch)
-set(pltotf_web_file ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/source/pltotf.web)
-
-add_custom_command(
-    OUTPUT
-        ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex.web
-    COMMAND
-        ${MIKTEX_PREFIX}tie
-        -m ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex.web
-        ${pltotf_web_file}
-        ${pltotf_miktex_change_file}
-    WORKING_DIRECTORY
-        ${CMAKE_CURRENT_BINARY_DIR}
-    MAIN_DEPENDENCY
-        ${pltotf_web_file}
-    DEPENDS
-        ${MIKTEX_PREFIX}tie
-        ${pltotf_miktex_change_file}
-    VERBATIM
-)
-
-add_custom_command(
-    OUTPUT
-        ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
-    COMMAND
-        ${MIKTEX_PREFIX}tie
-        -m ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
-        ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ppltotf-adapter.ch
-    WORKING_DIRECTORY
-        ${CMAKE_CURRENT_BINARY_DIR}
-    DEPENDS
-        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ppltotf-adapter.ch
-        ${MIKTEX_PREFIX}tie
-        ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex.web
-    VERBATIM
-)
-
-add_custom_command(
-    OUTPUT
-         ${CMAKE_CURRENT_BINARY_DIR}/ppltotf-final.web
-    COMMAND
-        ${MIKTEX_PREFIX}tie
-        -m  ${CMAKE_CURRENT_BINARY_DIR}/ppltotf-final.web
-        ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
-        ${projdir}/source/ppltotf.ch
-    WORKING_DIRECTORY
-        ${CMAKE_CURRENT_BINARY_DIR}
-    DEPENDS
-        ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
-        ${MIKTEX_PREFIX}tie
-        ${projdir}/source/ppltotf.ch
-    VERBATIM
-)
+include(webify.cmake)
 
 set(ppltotf_web_file ${CMAKE_CURRENT_BINARY_DIR}/ppltotf-final.web)
 
@@ -93,59 +42,3 @@ else()
             ptex_kanji
     )
 endif()
-
-# Last but not least: developer's convenience
-
-add_custom_command(
-    OUTPUT
-        ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex-n.web
-    COMMAND
-        web-n
-        < ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex.web
-        > ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex-n.web
-    WORKING_DIRECTORY
-        ${CMAKE_CURRENT_BINARY_DIR}
-    DEPENDS
-        ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex.web
-        web-n
-    VERBATIM
-)
-
-add_custom_command(
-    OUTPUT
-        ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf-n.web
-    COMMAND
-        web-n
-        < ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
-        > ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf-n.web
-    WORKING_DIRECTORY
-        ${CMAKE_CURRENT_BINARY_DIR}
-    DEPENDS
-        ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
-        web-n
-    VERBATIM
-)
-
-add_custom_command(
-    OUTPUT
-        ${CMAKE_CURRENT_BINARY_DIR}/ppltotf-final-n.web
-    COMMAND
-        web-n
-        < ${CMAKE_CURRENT_BINARY_DIR}/ppltotf-final.web
-        > ${CMAKE_CURRENT_BINARY_DIR}/ppltotf-final-n.web
-    WORKING_DIRECTORY
-        ${CMAKE_CURRENT_BINARY_DIR}
-    DEPENDS
-        ${CMAKE_CURRENT_BINARY_DIR}/ppltotf-final.web
-        web-n
-    VERBATIM
-)
-
-add_custom_target(ppltotf-dev ALL
-    DEPENDS
-        ${CMAKE_CURRENT_BINARY_DIR}/pltotf-miktex-n.web        
-        ${CMAKE_CURRENT_BINARY_DIR}/ppltotf-final-n.web
-        ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf-n.web
-)
-
-set_property(TARGET ppltotf-dev PROPERTY FOLDER ${MIKTEX_CURRENT_FOLDER})

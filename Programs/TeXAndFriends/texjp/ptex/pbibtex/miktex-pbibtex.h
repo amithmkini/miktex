@@ -1,4 +1,4 @@
-/* pbibtex-miktex.h:
+/* miktex-pbibtex.h:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -19,9 +19,7 @@
 
 #pragma once
 
-#include "pbibtex-miktex-config.h"
-
-#include "pbibtex-version.h"
+#include "miktex-pbibtex-config.h"
 
 #define IMPLEMENT_TCX 1
 
@@ -31,10 +29,6 @@
 #include <miktex/TeXAndFriends/InitFinalizeImpl>
 #include <miktex/TeXAndFriends/InputOutputImpl>
 #include <miktex/TeXAndFriends/WebAppInputLine>
-
-#if !defined(MIKTEXHELP_PBIBTEX)
-#include <miktex/Core/Help>
-#endif
 
 #include "pbibtex.h"
 

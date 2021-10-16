@@ -50,7 +50,7 @@ Thu Jun 30 11:00:00 UTC 2011
 
 #if defined(MIKTEX)
 #define C4PEXTERN extern
-#include "ptex-miktex.h"
+#include "miktex-ptex.h"
 #else
 #include "ptexd.h"
 #endif

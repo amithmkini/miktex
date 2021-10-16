@@ -1,5 +1,5 @@
-/* pbibtex.rc:
-
+/* miktex-ptex.cpp:
+   
    Copyright (C) 2021 Christian Schenk
 
    This file is free software; you can redistribute it and/or modify
@@ -17,12 +17,5 @@
    Foundation, 59 Temple Place - Suite 330, Boston, MA 02111-1307,
    USA. */
 
-#pragma code_page(65001)
-
-#include "pbibtex-version.h"
-
-#define VER_FILEDESCRIPTION_STR "pBibTeX - process bibliographies for latex, etc for pTeX"
-#define VER_INTERNALNAME_STR "pbibtex"
-#define VER_ORIGINALFILENAME_STR "miktex-pbibtex.exe"
-
-#include "miktex/win/version.rc"
+#define MIKTEX_PTEX_CPP
+#include "miktex-ptex.h"
