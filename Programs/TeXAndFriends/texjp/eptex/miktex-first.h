@@ -24,4 +24,4 @@
 #  include <miktex/utf8wrap.h>
 #endif
 
-#include "miktex-ptex-version.h"
+#include "miktex-eptex-version.h"

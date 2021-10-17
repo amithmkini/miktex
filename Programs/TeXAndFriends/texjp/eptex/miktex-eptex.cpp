@@ -1,5 +1,5 @@
-/* miktex-first.h:
-
+/* miktex-eptex.cpp:
+   
    Copyright (C) 2021 Christian Schenk
 
    This file is free software; you can redistribute it and/or modify
@@ -17,11 +17,5 @@
    Foundation, 59 Temple Place - Suite 330, Boston, MA 02111-1307,
    USA. */
 
-#pragma once
-
-#if defined(MIKTEX_WINDOWS)
-#  define MIKTEX_UTF8_WRAP_ALL 1
-#  include <miktex/utf8wrap.h>
-#endif
-
-#include "miktex-ptex-version.h"
+#define MIKTEX_ePTEX_CPP
+#include "miktex-eptex.h"

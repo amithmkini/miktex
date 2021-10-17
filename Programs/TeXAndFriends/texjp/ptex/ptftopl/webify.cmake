@@ -23,8 +23,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
             -m ${CMAKE_CURRENT_BINARY_DIR}/miktex-tftopl.web
-            ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/source/tftopl.web
-            ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/tftopl-miktex.ch
+                ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/source/tftopl.web
+                ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/tftopl-miktex.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -43,8 +43,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
         -m ${CMAKE_CURRENT_BINARY_DIR}/pre-ptftopl.web
-        ${CMAKE_CURRENT_BINARY_DIR}/miktex-tftopl.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ptftopl-adapter.ch
+            ${CMAKE_CURRENT_BINARY_DIR}/miktex-tftopl.web
+            ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ptftopl-adapter.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -63,8 +63,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
             -m  ${CMAKE_CURRENT_BINARY_DIR}/ptftopl-final.web
-            ${CMAKE_CURRENT_BINARY_DIR}/pre-ptftopl.web
-            ${projdir}/source/ptftopl.ch
+                ${CMAKE_CURRENT_BINARY_DIR}/pre-ptftopl.web
+                ${projdir}/source/ptftopl.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY

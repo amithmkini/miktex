@@ -23,8 +23,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
             -m ${CMAKE_CURRENT_BINARY_DIR}/miktex-dvitype.web
-            ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/source/dvitype.web
-            ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/dvitype-miktex.ch
+                ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/source/dvitype.web
+                ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/dvitype-miktex.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -43,8 +43,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
         -m ${CMAKE_CURRENT_BINARY_DIR}/pre-pdvitype.web
-        ${CMAKE_CURRENT_BINARY_DIR}/miktex-dvitype.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-pdvitype-adapter.ch
+            ${CMAKE_CURRENT_BINARY_DIR}/miktex-dvitype.web
+            ${CMAKE_CURRENT_SOURCE_DIR}/miktex-pdvitype-adapter.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -63,8 +63,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
             -m ${CMAKE_CURRENT_BINARY_DIR}/pdvitype-final.web
-            ${CMAKE_CURRENT_BINARY_DIR}/pre-pdvitype.web
-            ${projdir}/source/pdvitype.ch
+                ${CMAKE_CURRENT_BINARY_DIR}/pre-pdvitype.web
+                ${projdir}/source/pdvitype.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY

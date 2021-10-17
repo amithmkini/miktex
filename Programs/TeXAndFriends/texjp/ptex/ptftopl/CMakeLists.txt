@@ -34,11 +34,11 @@ create_web_app(pTFtoPL)
 
 if(LINK_EVERYTHING_STATICALLY)
     target_link_libraries(${MIKTEX_PREFIX}ptftopl
-        ptex_kanji
+        texjp-kanji
     )
 else()
     target_link_libraries(${ptftopl_target_name}
         PRIVATE
-            ptex_kanji
+            texjp-kanji
     )
 endif()

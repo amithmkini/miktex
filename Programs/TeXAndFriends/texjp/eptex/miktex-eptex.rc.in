@@ -1,4 +1,4 @@
-/* miktex-first.h:
+/* miktex-eptex.rc:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -17,11 +17,12 @@
    Foundation, 59 Temple Place - Suite 330, Boston, MA 02111-1307,
    USA. */
 
-#pragma once
+#pragma code_page(65001)
 
-#if defined(MIKTEX_WINDOWS)
-#  define MIKTEX_UTF8_WRAP_ALL 1
-#  include <miktex/utf8wrap.h>
-#endif
+#include "miktex-eptex-version.h"
 
-#include "miktex-ptex-version.h"
+#define VER_FILEDESCRIPTION_STR "e-pTeX - a document compiler intended to produce typesetting Japanese of high quality"
+#define VER_INTERNALNAME_STR "eptex"
+#define VER_ORIGINALFILENAME_STR "miktex-eptex.exe"
+
+#include "miktex/win/version.rc"

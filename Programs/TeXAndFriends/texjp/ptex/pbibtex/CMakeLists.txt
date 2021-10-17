@@ -40,11 +40,11 @@ create_web_app(pBibTeX)
 
 if(LINK_EVERYTHING_STATICALLY)
     target_link_libraries(${MIKTEX_PREFIX}pbibtex
-        ptex_kanji
+        texjp-kanji
     )
 else()
     target_link_libraries(${pbibtex_target_name}
         PRIVATE
-            ptex_kanji
+            texjp-kanji
     )
 endif()

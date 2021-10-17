@@ -23,8 +23,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
             -m ${CMAKE_CURRENT_BINARY_DIR}/miktex-pltotf.web
-            ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/source/pltotf.web
-            ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/pltotf-miktex.ch
+                ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/source/pltotf.web
+                ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEXWARE_DIR}/pltotf-miktex.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -43,8 +43,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
         -m ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
-        ${CMAKE_CURRENT_BINARY_DIR}/miktex-pltotf.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ppltotf-adapter.ch
+            ${CMAKE_CURRENT_BINARY_DIR}/miktex-pltotf.web
+            ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ppltotf-adapter.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -63,8 +63,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
             -m ${CMAKE_CURRENT_BINARY_DIR}/ppltotf-final.web
-            ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
-            ${projdir}/source/ppltotf.ch
+                ${CMAKE_CURRENT_BINARY_DIR}/pre-ppltotf.web
+                ${projdir}/source/ppltotf.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY

@@ -51,8 +51,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
         -m ${CMAKE_CURRENT_BINARY_DIR}/miktex-tex.web
-        ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEX_DIR}/source/tex.web
-        ${tex_miktex_change_files}
+            ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_TEX_DIR}/source/tex.web
+            ${tex_miktex_change_files}
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -71,8 +71,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
         -m ${CMAKE_CURRENT_BINARY_DIR}/pre-ptex.web
-        ${CMAKE_CURRENT_BINARY_DIR}/miktex-tex.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ptex-adapter.ch
+            ${CMAKE_CURRENT_BINARY_DIR}/miktex-tex.web
+            ${CMAKE_CURRENT_SOURCE_DIR}/miktex-ptex-adapter.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -91,9 +91,9 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
         -m ${CMAKE_CURRENT_BINARY_DIR}/ptex-final.web
-        ${CMAKE_CURRENT_BINARY_DIR}/pre-ptex.web
-        ${projdir}/source/ptex-base.ch
-        ${ptex_ch_synctex}
+            ${CMAKE_CURRENT_BINARY_DIR}/pre-ptex.web
+            ${projdir}/source/ptex-base.ch
+            ${ptex_ch_synctex}
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY

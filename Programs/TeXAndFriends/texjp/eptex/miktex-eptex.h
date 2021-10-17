@@ -1,4 +1,4 @@
-/* miktex-ptex.h:
+/* miktex-eptex.h:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -19,46 +19,46 @@
 
 #pragma once
 
-#include "miktex-ptex-config.h"
+#include "miktex-eptex-config.h"
 
 #if defined(MIKTEX_WINDOWS)
 #  define MIKTEX_UTF8_WRAP_ALL 1
 #  include <miktex/utf8wrap.h>
 #endif
 
-#include "miktex-ptex-version.h"
+#include "miktex-eptex-version.h"
 
 #include <miktex/TeXAndFriends/CharacterConverterImpl>
+#include <miktex/TeXAndFriends/ETeXApp>
+#include <miktex/TeXAndFriends/ETeXMemoryHandlerImpl>
 #include <miktex/TeXAndFriends/ErrorHandlerImpl>
 #include <miktex/TeXAndFriends/FormatHandlerImpl>
 #include <miktex/TeXAndFriends/InitFinalizeImpl>
 #include <miktex/TeXAndFriends/InputOutputImpl>
 #include <miktex/TeXAndFriends/StringHandlerImpl>
-#include <miktex/TeXAndFriends/TeXApp>
-#include <miktex/TeXAndFriends/TeXMemoryHandlerImpl>
 #include <miktex/W2C/Emulation>
 
-#include "ptexd.h"
+#include "eptexd.h"
 
 #include "texmfmp.h"
 
-#include <miktex/ptex.h>
+#include <miktex/eptex.h>
 
-extern PTEXPROGCLASS PTEXPROG;
+extern EPTEXPROGCLASS EPTEXPROG;
 
 class MemoryHandlerImpl :
-    public MiKTeX::TeXAndFriends::TeXMemoryHandlerImpl<PTEXPROGCLASS>
+    public MiKTeX::TeXAndFriends::ETeXMemoryHandlerImpl<EPTEXPROGCLASS>
 {
 public:
-  MemoryHandlerImpl(PTEXPROGCLASS& program, MiKTeX::TeXAndFriends::TeXMFApp& texmfapp) :
-      TeXMemoryHandlerImpl<PTEXPROGCLASS>(program, texmfapp)
+  MemoryHandlerImpl(EPTEXPROGCLASS& program, MiKTeX::TeXAndFriends::TeXMFApp& texmfapp) :
+      ETeXMemoryHandlerImpl<EPTEXPROGCLASS>(program, texmfapp)
   {
   }
 
 public:
     void Allocate(const std::unordered_map<std::string, int>& userParams) override
     {
-        TeXMemoryHandlerImpl<PTEXPROGCLASS>::Allocate(userParams);
+        TeXMemoryHandlerImpl<EPTEXPROGCLASS>::Allocate(userParams);
         MIKTEX_ASSERT(program.constfontbase == 0);
         size_t nFonts = program.fontmax - program.constfontbase;
         AllocateArray("fontdir", program.fontdir, nFonts);
@@ -69,7 +69,7 @@ public:
 public:
     void Free() override
     {
-        TeXMemoryHandlerImpl<PTEXPROGCLASS>::Free();
+        TeXMemoryHandlerImpl<EPTEXPROGCLASS>::Free();
         FreeArray("fontdir", program.fontdir);
         FreeArray("fontnumext", program.fontnumext);
         FreeArray("ctypebase", program.ctypebase);
@@ -78,36 +78,36 @@ public:
 public:
     void Check() override
     {
-        TeXMemoryHandlerImpl<PTEXPROGCLASS>::Check();
+        TeXMemoryHandlerImpl<EPTEXPROGCLASS>::Check();
         MIKTEX_ASSERT_VALID_HEAP_POINTER_OR_NIL(program.fontdir);
         MIKTEX_ASSERT_VALID_HEAP_POINTER_OR_NIL(program.fontnumext);
         MIKTEX_ASSERT_VALID_HEAP_POINTER_OR_NIL(program.ctypebase);
     }
 };
 
-class PTEXAPPCLASS :
-    public MiKTeX::TeXAndFriends::TeXApp
+class EPTEXAPPCLASS :
+    public MiKTeX::TeXAndFriends::ETeXApp
 {
 private:
-    MiKTeX::TeXAndFriends::CharacterConverterImpl<PTEXPROGCLASS> charConv{ PTEXPROG };
+    MiKTeX::TeXAndFriends::CharacterConverterImpl<EPTEXPROGCLASS> charConv{ EPTEXPROG };
 
 private:
-    MiKTeX::TeXAndFriends::ErrorHandlerImpl<PTEXPROGCLASS> errorHandler{ PTEXPROG };
+    MiKTeX::TeXAndFriends::ErrorHandlerImpl<EPTEXPROGCLASS> errorHandler{ EPTEXPROG };
 
 private:
-    MiKTeX::TeXAndFriends::FormatHandlerImpl<PTEXPROGCLASS> formatHandler{ PTEXPROG };
+    MiKTeX::TeXAndFriends::FormatHandlerImpl<EPTEXPROGCLASS> formatHandler{ EPTEXPROG };
 
 private:
-    MiKTeX::TeXAndFriends::InitFinalizeImpl<PTEXPROGCLASS> initFinalize{ PTEXPROG };
+    MiKTeX::TeXAndFriends::InitFinalizeImpl<EPTEXPROGCLASS> initFinalize{ EPTEXPROG };
 
 private:
-    MiKTeX::TeXAndFriends::InputOutputImpl<PTEXPROGCLASS> inputOutput{ PTEXPROG };
+    MiKTeX::TeXAndFriends::InputOutputImpl<EPTEXPROGCLASS> inputOutput{ EPTEXPROG };
 
 private:
-    MiKTeX::TeXAndFriends::StringHandlerImpl<PTEXPROGCLASS> stringHandler{ PTEXPROG };
+    MiKTeX::TeXAndFriends::StringHandlerImpl<EPTEXPROGCLASS> stringHandler{ EPTEXPROG };
 
 private:
-    MemoryHandlerImpl memoryHandler{ PTEXPROG, *this };
+    MemoryHandlerImpl memoryHandler{ EPTEXPROG, *this };
 
 public:
     void Init(std::vector<char*>& args) override
@@ -142,25 +142,25 @@ public:
 public:
     MiKTeX::Util::PathName GetMemoryDumpFileName() const override
     {
-        return MiKTeX::Util::PathName("ptex.fmt");
+        return MiKTeX::Util::PathName("eptex.fmt");
     }
 
 public:
     std::string GetInitProgramName() const override
     {
-        return "iniptex";
+        return "inieptex";
     }
 
 public:
     std::string GetVirginProgramName() const override
     {
-        return "virptex";
+        return "vireptex";
     }
 
 public:
     std::string TheNameOfTheGame() const override
     {
-        return "pTeX";
+        return "e-pTeX";
     }
 };
 
@@ -171,43 +171,62 @@ inline int loadpoolstrings(int size)
     return miktexloadpoolstrings(size);
 }
 
-extern PTEXAPPCLASS PTEXAPP;
+extern EPTEXAPPCLASS EPTEXAPP;
 
-inline char* gettexstring(PTEXPROGCLASS::strnumber stringNumber)
+inline char* gettexstring(EPTEXPROGCLASS::strnumber stringNumber)
 {
-  return xstrdup(PTEXAPP.GetTeXString(stringNumber).c_str());
+  return xstrdup(EPTEXAPP.GetTeXString(stringNumber).c_str());
 }
 
 inline void miktexreallocatenameoffile(size_t n)
 {  
-    PTEXPROG.nameoffile = reinterpret_cast<char*>(PTEXAPP.GetTeXMFMemoryHandler()->ReallocateArray("name_of_file", PTEXPROG.nameoffile, sizeof(*PTEXPROG.nameoffile), n, MIKTEX_SOURCE_LOCATION()));
+    EPTEXPROG.nameoffile = reinterpret_cast<char*>(EPTEXAPP.GetTeXMFMemoryHandler()->ReallocateArray("name_of_file", EPTEXPROG.nameoffile, sizeof(*EPTEXPROG.nameoffile), n, MIKTEX_SOURCE_LOCATION()));
 }
 
-#if defined(MIKTEX_PTEX_CPP)
-#define PTEX_PROG_VAR2(alias, name, type) type& alias = PTEXPROG.name
-#define PTEX_PROG_VAR(name, type) type& name = PTEXPROG.name
+#if defined(MIKTEX_EPTEX_CPP)
+#define EPTEX_PROG_VAR2(alias, name, type) type& alias = EPTEXPROG.name
+#define EPTEX_PROG_VAR(name, type) type& name = EPTEXPROG.name
 #else
-#define PTEX_PROG_VAR2(alias, name, type) extern type& alias
-#define PTEX_PROG_VAR(name, type) extern type& name
+#define EPTEX_PROG_VAR2(alias, name, type) extern type& alias
+#define EPTEX_PROG_VAR(name, type) extern type& name
 #endif
 
-PTEX_PROG_VAR(curh, PTEXPROGCLASS::scaled);
-PTEX_PROG_VAR(curinput, PTEXPROGCLASS::instaterecord);
-PTEX_PROG_VAR(curv, PTEXPROGCLASS::scaled);
-PTEX_PROG_VAR(eqtb, PTEXPROGCLASS::memoryword*);
-PTEX_PROG_VAR(jobname, PTEXPROGCLASS::strnumber);
-PTEX_PROG_VAR(ruledp, PTEXPROGCLASS::scaled);
-PTEX_PROG_VAR(ruleht, PTEXPROGCLASS::scaled);
-PTEX_PROG_VAR(rulewd, PTEXPROGCLASS::scaled);
-PTEX_PROG_VAR(termoffset, C4P::C4P_integer);
-PTEX_PROG_VAR(totalpages, C4P::C4P_integer);
-PTEX_PROG_VAR(zmem, PTEXPROGCLASS::memoryword*);
-PTEX_PROG_VAR2(texmflogname, logname, PTEXPROGCLASS::strnumber);
+EPTEX_PROG_VAR(curh, EPTEXPROGCLASS::scaled);
+EPTEX_PROG_VAR(curinput, EPTEXPROGCLASS::instaterecord);
+EPTEX_PROG_VAR(curv, EPTEXPROGCLASS::scaled);
+EPTEX_PROG_VAR(eqtb, EPTEXPROGCLASS::memoryword*);
+EPTEX_PROG_VAR(jobname, EPTEXPROGCLASS::strnumber);
+EPTEX_PROG_VAR(ruledp, EPTEXPROGCLASS::scaled);
+EPTEX_PROG_VAR(ruleht, EPTEXPROGCLASS::scaled);
+EPTEX_PROG_VAR(rulewd, EPTEXPROGCLASS::scaled);
+EPTEX_PROG_VAR(termoffset, C4P::C4P_integer);
+EPTEX_PROG_VAR(totalpages, C4P::C4P_integer);
+EPTEX_PROG_VAR(zmem, EPTEXPROGCLASS::memoryword*);
+EPTEX_PROG_VAR2(texmflogname, logname, EPTEXPROGCLASS::strnumber);
 
-using halfword = PTEXPROGCLASS::halfword;
+EPTEX_PROG_VAR(poolsize, C4P::C4P_integer);
+EPTEX_PROG_VAR(strstart, EPTEXPROGCLASS::poolpointer*);
+EPTEX_PROG_VAR(strpool, EPTEXPROGCLASS::packedasciicode*);
+EPTEX_PROG_VAR(poolptr, EPTEXPROGCLASS::poolpointer);
+
+using halfword = EPTEXPROGCLASS::halfword;
+using poolpointer = EPTEXPROGCLASS::poolpointer;
+using strnumber = EPTEXPROGCLASS::strnumber;
+
+inline auto print(C4P::C4P_integer s)
+{
+    EPTEXPROG.print(s);
+}
+
+inline auto println()
+{
+    EPTEXPROG.println();
+}
+
+
 
 #if WITH_SYNCTEX
-PTEX_PROG_VAR(synctexoffset, C4P::C4P_integer);
-PTEX_PROG_VAR(synctexoption, C4P::C4P_integer);
+EPTEX_PROG_VAR(synctexoffset, C4P::C4P_integer);
+EPTEX_PROG_VAR(synctexoption, C4P::C4P_integer);
 #include "synctex.h"
 #endif

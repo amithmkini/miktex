@@ -29,27 +29,27 @@ set_source_files_properties(
     PROPERTIES LANGUAGE CXX
 )
 
-add_library(ptex_kanji STATIC ${libkanji_sources})
+add_library(texjp-kanji STATIC ${libkanji_sources})
 
-target_include_directories(ptex_kanji
+target_include_directories(texjp-kanji
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/source
 )
 
-target_link_libraries(ptex_kanji
+target_link_libraries(texjp-kanji
     PUBLIC
         ${ptexenc_dll_name}
         ${w2cemu_dll_name}
         ${zlib_dll_name}
 )
 
-target_link_libraries(ptex_kanji
+target_link_libraries(texjp-kanji
     PRIVATE
         ${web2c_sources_dll_name}
 )
 
 if(MIKTEX_NATIVE_WINDOWS)
-    target_link_libraries(ptex_kanji
+    target_link_libraries(texjp-kanji
         PRIVATE
             ${utf8wrap_dll_name}
     )

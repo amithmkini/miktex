@@ -34,11 +34,11 @@ create_web_app(pDVItype)
 
 if(LINK_EVERYTHING_STATICALLY)
     target_link_libraries(${MIKTEX_PREFIX}pdvitype
-        ptex_kanji
+        texjp-kanji
     )
 else()
     target_link_libraries(${pdvitype_target_name}
         PRIVATE
-            ptex_kanji
+            texjp-kanji
     )
 endif()

@@ -40,7 +40,7 @@ add_definitions(
 )
 
 list(APPEND C4P_FLAGS
-    --auto-exit=10
+    --auto-exit-label=10
     --chars-are-unsigned
     --emit-optimize-pragmas
 )
@@ -71,7 +71,7 @@ list(APPEND ${ptex_target_name}_sources
 
 list(APPEND ${ptex_target_name}_sources
     ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-common.h
-    ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-pdftex.h
+    ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-ptex.h
     ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex.c
     ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex.h
 )
@@ -97,16 +97,17 @@ add_custom_command(
         ${CMAKE_CURRENT_BINARY_DIR}/ptex_pool.cpp
     COMMAND
         inipool
-        ${CMAKE_CURRENT_BINARY_DIR}/ptex.pool
-        ptex-miktex.h
-        ${ptex_progclass}
-        ${ptex_prog}
+            ${CMAKE_CURRENT_BINARY_DIR}/ptex.pool
+            ptex-miktex.h
+            ${ptex_progclass}
+            ${ptex_prog}
         > ${CMAKE_CURRENT_BINARY_DIR}/ptex_pool.cpp
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
+    MAIN_DEPENDENCY
+        ${CMAKE_CURRENT_BINARY_DIR}/ptex.pool
     DEPENDS
         inipool
-        ${CMAKE_CURRENT_BINARY_DIR}/ptex.pool
 )
 
 if(LINK_EVERYTHING_STATICALLY)
@@ -114,7 +115,7 @@ if(LINK_EVERYTHING_STATICALLY)
         ${kpsemu_lib_name}
         ${w2cemu_lib_name}
         ${web2c_sources_lib_name}
-        ptex_kanji
+        texjp-kanji
     )
     if(MIKTEX_NATIVE_WINDOWS)
         target_link_libraries(${MIKTEX_PREFIX}ptex
@@ -127,7 +128,7 @@ else()
             ${kpsemu_dll_name}
             ${w2cemu_dll_name}
             ${web2c_sources_dll_name}
-            ptex_kanji
+            texjp-kanji
     )
     if(MIKTEX_NATIVE_WINDOWS)
         target_link_libraries(${ptex_target_name}

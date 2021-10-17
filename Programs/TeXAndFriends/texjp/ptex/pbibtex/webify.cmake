@@ -23,8 +23,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
             -m ${CMAKE_CURRENT_BINARY_DIR}/miktex-bibtex.web
-            ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_BIBTEX_DIR}/source/bibtex.web
-            ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_BIBTEX_DIR}/bibtex-miktex.ch
+                ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_BIBTEX_DIR}/source/bibtex.web
+                ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_BIBTEX_DIR}/bibtex-miktex.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -43,8 +43,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
         -m ${CMAKE_CURRENT_BINARY_DIR}/pre-pbibtex.web
-        ${CMAKE_CURRENT_BINARY_DIR}/miktex-bibtex.web
-        ${CMAKE_CURRENT_SOURCE_DIR}/miktex-pbibtex-adapter.ch
+            ${CMAKE_CURRENT_BINARY_DIR}/miktex-bibtex.web
+            ${CMAKE_CURRENT_SOURCE_DIR}/miktex-pbibtex-adapter.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -63,8 +63,8 @@ add_custom_command(
     COMMAND
         ${MIKTEX_PREFIX}tie
             -m  ${CMAKE_CURRENT_BINARY_DIR}/pbibtex-final.web
-            ${CMAKE_CURRENT_BINARY_DIR}/pre-pbibtex.web
-            ${projdir}/source/pbibtex.ch
+                ${CMAKE_CURRENT_BINARY_DIR}/pre-pbibtex.web
+                ${projdir}/source/pbibtex.ch
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -89,8 +89,9 @@ foreach(_path ${web_files})
             web-n < ${_path} > ${_out}
         WORKING_DIRECTORY
             ${CMAKE_CURRENT_BINARY_DIR}
-        DEPENDS
+        MAIN_DEPENDENCY
             ${_path}
+        DEPENDS
             web-n
         VERBATIM
     )

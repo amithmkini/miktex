@@ -1,5 +1,5 @@
-/* miktex-first.h:
-
+/* c4p_pre.h:
+   
    Copyright (C) 2021 Christian Schenk
 
    This file is free software; you can redistribute it and/or modify
@@ -19,9 +19,9 @@
 
 #pragma once
 
-#if defined(MIKTEX_WINDOWS)
-#  define MIKTEX_UTF8_WRAP_ALL 1
-#  include <miktex/utf8wrap.h>
-#endif
+#include "miktex-first.h"
 
-#include "miktex-ptex-version.h"
+#if _MSC_VER == 1800 || _MSC_VER == 1900
+// workaround bug #2371 mathchoice in pdftex broken 
+#  define C4P_NOOPT_mlisttohlist
+#endif

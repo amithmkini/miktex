@@ -7,8 +7,13 @@
 #include <ptexenc/ptexenc.h>
 #ifdef epTeX
 #include <ptexenc/unicode.h>
+#if defined(MIKTEX)
+#define getintone(w) ((w).c4p_P2.c4p_int)
+#define setintone(w,a) ((w).c4p_P2.c4p_int=(a))
+#else
 #define getintone(w) ((w).cint1)
 #define setintone(w,a) ((w).cint1=(a))
+#endif
 #endif
 #include <zlib.h>
 
