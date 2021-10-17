@@ -51,6 +51,7 @@ set(main_ini_names
   dvipdfmx
   elatex
   eplain
+  eptex
   etex
   fontinst
   formats
@@ -84,6 +85,7 @@ set(main_ini_names
   pdfxmltex
   pdfxtex
   platex
+  platex-dev
   ptex
   t4ht
   tex

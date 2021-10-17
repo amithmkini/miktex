@@ -52,6 +52,7 @@ enum class Engine
 {
   LuaTeX,
   TeX,
+  epTeX,
   pdfTeX,
   pTeX,
   XeTeX,
@@ -132,6 +133,10 @@ private:
     {
       this->engine = Engine::pTeX;
     }
+    else if (Utils::EqualsIgnoreCase(engine, "eptex"))
+    {
+      this->engine = Engine::epTeX;
+    }
     else if (Utils::EqualsIgnoreCase(engine, "xetex"))
     {
       this->engine = Engine::XeTeX;
@@ -165,6 +170,8 @@ public:
       return "pdftex";
     case Engine::pTeX:
       return "ptex";
+    case Engine::epTeX:
+      return "eptex";
     case Engine::XeTeX:
       return "xetex";
     case Engine::LuaHBTeX:
@@ -186,6 +193,8 @@ private:
       return MIKTEX_PDFTEX_EXE;
     case Engine::pTeX:
       return MIKTEX_PTEX_EXE;
+    case Engine::epTeX:
+      return MIKTEX_EPTEX_EXE;
     case Engine::XeTeX:
       return MIKTEX_XETEX_EXE;
     case Engine::LuaHBTeX:
@@ -209,6 +218,7 @@ private:
   bool IsExtended() const
   {
     bool result = engine == Engine::LuaTeX || engine == Engine::pdfTeX || engine == Engine::XeTeX;
+    result = result || engine == Engine::epTeX;
     result = result || engine == Engine::LuaHBTeX;
     return result;
   }

@@ -171,6 +171,31 @@ REMOVE_THIS_END
 
 % _____________________________________________________________________________
 %
+% [54.1419]
+% _____________________________________________________________________________
+
+@x
+    if j>=0 then k:=setinfileenc(input_file[j],stringcast(name_of_file+1))
+    else k:=setstdinenc(stringcast(name_of_file+1));
+@y
+    if j>=0 then k:=setinfileenc(input_file[j],stringcast(name_of_file))
+    else k:=setstdinenc(stringcast(name_of_file));
+@z
+
+@x
+      term_and_log: begin wterm(stringcast(name_of_file + 1));
+        wlog(stringcast(name_of_file + 1)); end;
+      log_only:  wlog(stringcast(name_of_file + 1));
+      term_only: wterm(stringcast(name_of_file + 1));
+@y
+      term_and_log: begin wterm(name_of_file);
+        wlog(name_of_file); end;
+      log_only:  wlog(name_of_file);
+      term_only: wterm(name_of_file);
+@z
+
+% _____________________________________________________________________________
+%
 % [61.1715] \[54/\pTeX] System-dependent changes for \pTeX
 % _____________________________________________________________________________
 

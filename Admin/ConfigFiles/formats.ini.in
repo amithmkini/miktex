@@ -219,6 +219,24 @@
 	description = plain pTeX 
 	input = ptex.ini
 
+[eptex]
+
+	compiler = eptex
+	description = plain e-pTeX 
+	input = eptex.ini
+
+[platex]
+
+	compiler = eptex
+	description = pLaTeX
+	input = platex.ini
+
+[platex-dev]
+
+	compiler = eptex
+	description = pLaTeX dev
+	input = platex.ini
+
 [tex]
 
 	compiler = tex

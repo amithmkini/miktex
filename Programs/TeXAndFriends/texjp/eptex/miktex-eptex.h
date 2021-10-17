@@ -50,10 +50,10 @@ class MemoryHandlerImpl :
     public MiKTeX::TeXAndFriends::ETeXMemoryHandlerImpl<EPTEXPROGCLASS>
 {
 public:
-  MemoryHandlerImpl(EPTEXPROGCLASS& program, MiKTeX::TeXAndFriends::TeXMFApp& texmfapp) :
-      ETeXMemoryHandlerImpl<EPTEXPROGCLASS>(program, texmfapp)
-  {
-  }
+    MemoryHandlerImpl(EPTEXPROGCLASS& program, MiKTeX::TeXAndFriends::TeXMFApp& texmfapp) :
+        ETeXMemoryHandlerImpl<EPTEXPROGCLASS>(program, texmfapp)
+    {
+    }
 
 public:
     void Allocate(const std::unordered_map<std::string, int>& userParams) override
@@ -88,6 +88,12 @@ public:
 class EPTEXAPPCLASS :
     public MiKTeX::TeXAndFriends::ETeXApp
 {
+public:
+    enum {
+        OPT_KANJI = 10000,
+        OPT_KANJI_INTERNAL,
+    };
+
 private:
     MiKTeX::TeXAndFriends::CharacterConverterImpl<EPTEXPROGCLASS> charConv{ EPTEXPROG };
 
@@ -109,6 +115,45 @@ private:
 private:
     MemoryHandlerImpl memoryHandler{ EPTEXPROG, *this };
 
+private:
+    std::string T_(const char* msgId)
+    {
+        return msgId;
+    }
+
+public:
+    void AddOptions() override
+    {
+        ETeXApp::AddOptions();
+        AddOption("kanji", T_("set Japanese encoding (ENC=euc|jis|sjis|utf8)."), OPT_KANJI, POPT_ARG_STRING, "ENC");
+        AddOption("kanji-internal", T_("set Japanese internal encoding (ENC=euc|sjis)."), OPT_KANJI_INTERNAL, POPT_ARG_STRING, "ENC");
+    }
+
+public:
+    bool ProcessOption(int opt, const std::string& optArg) override
+    {
+        bool done = true;
+        switch (opt)
+        {
+        case OPT_KANJI:
+            if (!set_enc_string (optArg.c_str(), nullptr))
+            {
+                BadUsage();
+            }
+            break;
+        case OPT_KANJI_INTERNAL:
+            if (!set_enc_string (nullptr, optArg.c_str()))
+            {
+                BadUsage();
+            }
+            break;
+        default:
+            done = ETeXApp::ProcessOption(opt, optArg);
+            break;
+        }
+        return done;
+    }
+
 public:
     void Init(std::vector<char*>& args) override
     {
@@ -120,6 +165,7 @@ public:
         SetStringHandler(&stringHandler);
         SetTeXMFMemoryHandler(&memoryHandler);
         TeXApp::Init(args);
+        initkanji();
         kpse_set_program_name(args[0], nullptr);
         EnableFeature(MiKTeX::TeXAndFriends::Feature::EightBitChars);
 #if defined(IMPLEMENT_TCX)

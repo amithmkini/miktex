@@ -98,7 +98,7 @@ add_custom_command(
     COMMAND
         inipool
             ${CMAKE_CURRENT_BINARY_DIR}/eptex.pool
-            eptex-miktex.h
+            miktex-eptex.h
             ${eptex_progclass}
             ${eptex_prog}
         > ${CMAKE_CURRENT_BINARY_DIR}/eptex_pool.cpp
