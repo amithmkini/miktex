@@ -1,4 +1,4 @@
-%% miktex-pdvitype.ch:
+%% miktex-updvitype.ch:
 %% 
 %% Copyright (C) 2021 Christian Schenk
 %% 
@@ -23,6 +23,17 @@
 
 @x
   parse_arguments;
+@y
+@z
+
+@x
+  REMOVE_THIS_BEGIN;
+  print (banner);
+  print (' (');
+  print (conststringcast(get_enc_string));
+  print (')');
+  print_ln (version_string);
+  REMOVE_THIS_END;
 @y
 @z
 
@@ -97,7 +108,7 @@ endif('HEX_CHAR_CODE')
 
 @x
 const n_options = 10; {Pascal won't count array lengths for us.}
-      usage_help (PDVITYPE_HELP, 'issue@@texjp.org');
+      usage_help (UPDVITYPE_HELP, 'issue@@texjp.org');
     end else if argument_is ('kanji') then begin
       set_prior_file_enc;
       if (not set_enc_string(optarg,optarg)) then begin
