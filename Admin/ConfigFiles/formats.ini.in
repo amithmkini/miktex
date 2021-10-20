@@ -225,6 +225,12 @@
 	description = plain e-pTeX 
 	input = eptex.ini
 
+[euptex]
+
+	compiler = euptex
+	description = plain e-upTeX 
+	input = euptex.ini
+
 [uptex]
 
 	compiler = uptex
@@ -242,6 +248,18 @@
 	compiler = eptex
 	description = pLaTeX dev
 	input = platex.ini
+
+[uplatex]
+
+	compiler = euptex
+	description = uplatex
+	input = uplatex.ini
+
+[uplatex-dev]
+
+	compiler = euptex
+	description = uplatex
+	input = uplatex.ini
 
 [tex]
 

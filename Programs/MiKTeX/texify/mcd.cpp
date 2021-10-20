@@ -239,7 +239,7 @@ enum class MacroLanguage
 
 enum class Engine
 {
-  NotSet, TeX, pdfTeX, pTeX, epTeX, upTeX, XeTeX, LuaTeX, LuaHBTeX
+  NotSet, TeX, pdfTeX, pTeX, epTeX, eupTeX, upTeX, XeTeX, LuaTeX, LuaHBTeX
 };
 
 enum class OutputType {
@@ -374,6 +374,9 @@ public:
   string eptexProgram;
 
 public:
+  string euptexProgram;
+
+public:
   string uptexProgram;
 
 public:
@@ -432,6 +435,10 @@ public:
     else if (Utils::EqualsIgnoreCase(engineName, "eptex"))
     {
       engine = Engine::epTeX;
+    }
+    else if (Utils::EqualsIgnoreCase(engineName, "euptex"))
+    {
+      engine = Engine::eupTeX;
     }
     else if (Utils::EqualsIgnoreCase(engineName, "uptex"))
     {
@@ -509,6 +516,7 @@ Options::Options()
   pdftexProgram = SetProgramName("PDFTEX", MIKTEX_PDFTEX_EXE);
   ptexProgram = SetProgramName("PTEX", MIKTEX_PTEX_EXE);
   eptexProgram = SetProgramName("EPTEX", MIKTEX_EPTEX_EXE);
+  euptexProgram = SetProgramName("EUPTEX", MIKTEX_EUPTEX_EXE);
   uptexProgram = SetProgramName("UPTEX", MIKTEX_UPTEX_EXE);
   texProgram = SetProgramName("TEX", MIKTEX_TEX_EXE);
   texindexProgram = SetProgramName("TEXINDEX", "texindex");

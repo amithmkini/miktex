@@ -53,6 +53,7 @@ enum class Engine
   LuaTeX,
   TeX,
   epTeX,
+  eupTeX,
   pdfTeX,
   pTeX,
   upTeX,
@@ -138,6 +139,10 @@ private:
     {
       this->engine = Engine::epTeX;
     }
+    else if (Utils::EqualsIgnoreCase(engine, "euptex"))
+    {
+      this->engine = Engine::eupTeX;
+    }
     else if (Utils::EqualsIgnoreCase(engine, "uptex"))
     {
       this->engine = Engine::upTeX;
@@ -177,6 +182,8 @@ public:
       return "ptex";
     case Engine::epTeX:
       return "eptex";
+    case Engine::eupTeX:
+      return "euptex";
     case Engine::upTeX:
       return "uptex";
     case Engine::XeTeX:
@@ -202,6 +209,8 @@ private:
       return MIKTEX_PTEX_EXE;
     case Engine::epTeX:
       return MIKTEX_EPTEX_EXE;
+    case Engine::eupTeX:
+      return MIKTEX_EUPTEX_EXE;
     case Engine::upTeX:
       return MIKTEX_UPTEX_EXE;
     case Engine::XeTeX:
@@ -228,6 +237,7 @@ private:
   {
     bool result = engine == Engine::LuaTeX || engine == Engine::pdfTeX || engine == Engine::XeTeX;
     result = result || engine == Engine::epTeX;
+    result = result || engine == Engine::eupTeX;
     result = result || engine == Engine::LuaHBTeX;
     return result;
   }

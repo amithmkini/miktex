@@ -52,6 +52,7 @@ set(main_ini_names
   elatex
   eplain
   eptex
+  euptex
   etex
   fontinst
   formats
@@ -93,6 +94,8 @@ set(main_ini_names
   texinfo
   ttf2pk
   ttf2tfm
+  uplatex
+  uplatex-dev
   uptex
   utf8mex
   xdvipdfmx
