@@ -1,4 +1,4 @@
-/* miktex/ptex.h:
+/* miktex/euptex.h:
 
    Copyright (C) 2021 Christian Schenk
 
@@ -32,8 +32,8 @@
 #define fromkuten fromKUTEN
 #define fromsjis fromSJIS
 #define fromucs fromUCS
-#define hi Hi
-#define lo Lo
+#define isinternaleuc is_internalEUC
+#define isinternaluptex is_internalUPTEX
 #define tobuff toBUFF
 #define todvi toDVI
 #define toucs toUCS
