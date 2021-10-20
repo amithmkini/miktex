@@ -225,6 +225,12 @@
 	description = plain e-pTeX 
 	input = eptex.ini
 
+[uptex]
+
+	compiler = uptex
+	description = plain upTeX 
+	input = uptex.ini
+
 [platex]
 
 	compiler = eptex

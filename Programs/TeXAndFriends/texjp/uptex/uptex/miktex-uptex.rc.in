@@ -19,7 +19,7 @@
 
 #pragma code_page(65001)
 
-#include "miktex-ptex-version.h"
+#include "miktex-uptex-version.h"
 
 #define VER_FILEDESCRIPTION_STR "upTeX - a document compiler intended to produce typesetting Japanese of high quality"
 #define VER_INTERNALNAME_STR "uptex"

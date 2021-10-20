@@ -93,6 +93,7 @@ set(main_ini_names
   texinfo
   ttf2pk
   ttf2tfm
+  uptex
   utf8mex
   xdvipdfmx
   xelatex-dev

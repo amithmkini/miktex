@@ -34,15 +34,15 @@ set(tex_miktex_change_files
 )
 
 set(uptex_ch_synctex
-	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-def.ch0
-	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-mem.ch0
+    ${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-def.ch0
 	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-p-mem.ch0
+	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-mem.ch0
 	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-p-mem.ch1
 	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-p-rec.ch0
-	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-p-rec.ch1
 	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-rec.ch0
 	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-rec.ch1
 	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-rec.ch2
+	${CMAKE_SOURCE_DIR}/${MIKTEX_REL_SYNCTEX_SOURCE_DIR}/synctex-p-rec.ch1
 )
 
 add_custom_command(
@@ -115,7 +115,7 @@ add_custom_command(
         -m ${CMAKE_CURRENT_BINARY_DIR}/uptex-final.web
             ${CMAKE_CURRENT_BINARY_DIR}/pre-uptex.web
             ${projdir}/source/uptex-m.ch
-            ${ptex_ch_synctex}
+            ${uptex_ch_synctex}
     WORKING_DIRECTORY
         ${CMAKE_CURRENT_BINARY_DIR}
     MAIN_DEPENDENCY
@@ -123,7 +123,7 @@ add_custom_command(
     DEPENDS
         ${MIKTEX_PREFIX}tie
         ${projdir}/source/uptex-m.ch
-        ${ptex_ch_synctex}
+        ${uptex_ch_synctex}
     VERBATIM
 )
 

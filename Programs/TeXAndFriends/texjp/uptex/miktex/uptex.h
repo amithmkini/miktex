@@ -27,9 +27,13 @@
 #define byte4 BYTE4
 #define frombuff fromBUFF
 #define fromdvi fromDVI
+#define fromeuc fromEUC
 #define fromjis fromJIS
+#define fromkuten fromKUTEN
+#define fromsjis fromSJIS
 #define fromucs fromUCS
 #define isinternaleuc is_internalEUC
 #define isinternaluptex is_internalUPTEX
 #define tobuff toBUFF
 #define todvi toDVI
+#define toucs toUCS

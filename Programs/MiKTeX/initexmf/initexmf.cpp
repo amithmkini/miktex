@@ -1493,6 +1493,7 @@ vector<FileLink> miktexFileLinks =
   { MIKTEX_UPBIBTEX_EXE, { "upbibtex" } },
   { MIKTEX_UPDVITYPE_EXE, { "updvitype" } },
   { MIKTEX_UPPLTOTF_EXE, { "uppltotf" } },
+  { MIKTEX_UPTEX_EXE, { "uptex" } },
   { MIKTEX_UPTFTOPL_EXE, { "uptftopl" } },
   { MIKTEX_PREFIX "upmendex" MIKTEX_EXE_FILE_SUFFIX, { "upmendex"} },
   { MIKTEX_VFTOVP_EXE, { "vftovp" } },

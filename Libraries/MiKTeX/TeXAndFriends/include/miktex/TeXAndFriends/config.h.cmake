@@ -76,7 +76,7 @@
 #  define MIKTEX_TEX_COMPILER 1
 #endif
 
-#if defined(MIKTEX_PTEX) || defined(MIKTEX_EPTEX)
+#if defined(MIKTEX_PTEX) || defined(MIKTEX_EPTEX) || defined(MIKTEX_UPTEX)
 #  define MIKTEX_PTEX_FAMILY 1
 #  define MIKTEX_TEX_COMPILER 1
 #endif

@@ -99,7 +99,7 @@ add_custom_command(
         inipool
             ${CMAKE_CURRENT_BINARY_DIR}/uptex.pool
             miktex-uptex.h
-            ${putex_progclass}
+            ${uptex_progclass}
             ${uptex_prog}
         > ${CMAKE_CURRENT_BINARY_DIR}/uptex_pool.cpp
     WORKING_DIRECTORY
