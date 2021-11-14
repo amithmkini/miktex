@@ -22,7 +22,7 @@
 #include <cstdarg>
 #include <cstdlib>
 #include <climits>
-
+#include <string.h>
 #include <getopt.h>
 
 #include "common.h"

@@ -38,7 +38,7 @@ namespace bibtex {
 #include <miktex/bibtex.defaults.h>
 }
 
-#include <miktex/TeXjp/common.h>
+#include <miktex/texjp/common.h>
 
 extern UPBIBTEXPROGCLASS UPBIBTEXPROG;
 

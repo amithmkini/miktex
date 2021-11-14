@@ -189,7 +189,6 @@ typedef double real;
 #define stringcast(x) ((char *) (x))
 
 #define ucharcast(x) ((unsigned char)(x))
-#define ustringcast(x) ((unsigned char *) (x))
 
 #if defined(MIKTEX_WINDOWS)
 #  define promptfilenamehelpmsg "(Press Enter to retry, or Control-Z to exit"
